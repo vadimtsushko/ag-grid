@@ -5,21 +5,29 @@ import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 
+import "package:js/js.dart";
+
 void main() {
   initialiseAgGridWithWebComponents();
 
   var gridDiv = querySelector('#myGrid');
-  GridOptions go = new GridOptions();
-  go.columnDefs = [
+  var columnDefs = [
     new ColumnDef(headerName: 'Make', field: 'make'),
     new ColumnDef(headerName: 'Model', field: 'model'),
-    new ColumnDef(headerName: 'Price', field: 'price'),
+    new ColumnDef(headerName: 'Price', field: 'price')
   ];
-//
-  go.rowData = new JsObject.jsify([
+
+  var rowData = new JsObject.jsify([
     {'make': "Toyota", 'model': "Celica", 'price': 35000},
     {'make': "Ford", 'model': "Mondeo", 'price': 32000},
     {'make': "Porsche", 'model': "Boxter", 'price': 72000}
   ]);
+
+  GridOptions go = new GridOptions(
+      columnDefs: columnDefs,
+      rowData: rowData,
+      enableFilter: true,
+      enableSorting: true,
+      enableColResize: true);
   Grid grid = new Grid(gridDiv, go);
 }
