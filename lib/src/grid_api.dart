@@ -80,6 +80,8 @@ class GridApi {
   /// ensureColumnVisible(key: string | Column | ColDef): void;
 
   external void ensureColumnVisible(key);
+  external void selectNode(node, bool tryMulti, bool suppressEvents);
+  external void forEachNodeAfterFilter(Function callback);
 
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;

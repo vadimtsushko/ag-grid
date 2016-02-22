@@ -7,12 +7,13 @@ import "dart:js";
 
 import "package:js/js.dart";
 
-
 headerCellRendererFunc(RendererParam params) {
   var cb = new CheckboxInputElement();
   cb.onChange.listen((event) {
     if (cb.checked) {
-      params.api.selectAll();
+      params.api.forEachNodeAfterFilter(allowInterop((node, index) {
+        params.api.selectNode(node, true, true);
+      }));
     } else {
       params.api.deselectAll();
     }
@@ -35,9 +36,14 @@ void main() {
 
   var gridDiv = querySelector('#myGrid');
   var columnDefs = [
-    new ColumnDef(headerName: '', width: 25, checkboxSelection: true, suppressSorting: true,
+    new ColumnDef(
+        headerName: '',
+        width: 25,
+        checkboxSelection: true,
+        suppressSorting: true,
         headerCellRenderer: allowInterop(headerCellRendererFunc),
-        suppressMenu: true, pinned: true),
+        suppressMenu: true,
+        pinned: true),
     new ColumnDef(headerName: 'Make', field: 'make'),
     new ColumnDef(headerName: 'Model', field: 'model'),
     new ColumnDef(headerName: 'Price', field: 'price')

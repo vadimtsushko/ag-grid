@@ -9,6 +9,7 @@ part 'grid_options.dart';
 part 'column_def.dart';
 part 'params.dart';
 part 'grid_api.dart';
+part 'row_node.dart';
 
 @JS()
 external initialiseAgGridWithWebComponents();
