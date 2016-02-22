@@ -22,6 +22,12 @@ class GridOptions {
   external bool get enableServerSideSorting;
   external bool get enableFilter;
   external bool get enableServerSideFilter;
+  ///Type of row selection, set to either 'single' or 'multiple' to enable selection
+  external String get rowSelection;
+  ///Set to true or false. If true, then rows will be deselected if you hold down ctrl + click the row.
+  ///Normal behaviour with the grid disallows deselection of nodes (ie once a node is selected,
+  ///it remains selected until another row is selected in it's place).
+  external bool get rowDeselection;
   external factory GridOptions(
       {List<ColumnDef> columnDefs,
       rowData,
@@ -41,5 +47,7 @@ class GridOptions {
       bool enableSorting,
       bool enableServerSideSorting,
       bool enableFilter,
+      bool rowDeselection,
+      String rowSelection,
       bool enableServerSideFilter});
 }

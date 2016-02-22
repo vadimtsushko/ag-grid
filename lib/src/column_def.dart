@@ -64,17 +64,103 @@ class ColumnDef extends AbstractColDef {
 
   /// Expression or function to get the cells value.
   /// String | Function;
-  external Func1<CallbackParam, String> get headerValueGetter;
+  external Func1<RendererParam, String> get headerValueGetter;
+  /** Set to true for this column to be hidden. Naturally you might think, it would make more sense to call this field 'visible' and mark it false to hide,
+   *  however we want all default values to be false and we want columns to be visible by default. */
+  external bool get hide;
+  /** Whether this column is pinned or not. */
+  external bool get pinned;
+  /** Tooltip for the column header */
+  external String get headerTooltip;
+  /** Expression or function to get the cells value. */
+  external String get valueGetter;
+  /** To provide custom rendering to the header. */
+  external Function get headerCellRenderer;
+  /** To provide a template for the header.
+  headerCellTemplate?: ((params: any) => string | HTMLElement) | string | HTMLElement; */
+  external Func1<RendererParam, String> get headerCellTemplate;
 
-  external factory ColumnDef({
-      String headerName,
+  /** Initial width, in pixels, of the cell */
+  external int get width;
+  /** Min width, in pixels, of the cell */
+  external int get minWidth;
+  /** Max width, in pixels, of the cell */
+  external int get maxWidth;
+
+  /** Class to use for the cell. Can be string, array of strings, or function.
+  cellClass?: string | string[] | ((cellClassParams: any) => string | string[]); */
+  external get cellClass;
+  /** An object of css values. Or a function returning an object of css values.
+  cellStyle?: {} | ((params: any) => {}); */
+  external get cellStyle;
+  /** A function for rendering a cell.
+  cellRenderer?: Function | {}; */
+  external Func1<RendererParam, String> get cellRenderer;
+
+  /** A function for rendering a floating cell.
+  floatingCellRenderer?: Function | {};*/
+  external Func1<RendererParam, String> get floatingCellRenderer;
+  /** Name of function to use for aggregation. One of [sum,min,max]. */
+  external String get aggFunc;
+  /** To group by this column by default, provide an index here. */
+  external int get rowGroupIndex;
+
+  /** Comparator function for custom sorting.
+  comparator?: (valueA: any, valueB: any, nodeA?: RowNode, nodeB?: RowNode, isInverted?: boolean) => number;
+      */
+  /**Set to true to render a selection checkbox in the column.
+  checkboxSelection?: boolean | (Function);
+      */
+  external get checkboxSelection;
+  /** Set to true if no menu should be shown for this column header. */
+  external bool get suppressMenu;
+
+
+  /** Set to true if no sorting should be done for this column. */
+
+  external bool get suppressSorting;
+  /** Set to true to not allow moving this column via dragging it's header */
+  external bool get suppressMovable;
+  /** Set to true if you want the unsorted icon to be shown when no sort is applied to this column. */
+  external bool get unSortIcon;
+  /** Set to true if you want this columns width to be fixed during 'size to fit' operation. */
+  external bool get suppressSizeToFit;
+  /** Set to true if you do not want this column to be resizable by dragging it's edge. */
+  external bool get suppressResize;
+  /** Set to true if you do not want this column to be auto-resizable by double clicking it's edge. */
+  external bool get suppressAutoSize;
+
+  external factory ColumnDef(
+      {String headerName,
       String columnGroupShow,
       headerClass,
       String colId,
       String sort,
       String field,
-int sortedAt,
+      int sortedAt,
       List<String> sortingOrder,
-  Func1<CallbackParam, String> headerValueGetter
-      });
+      bool hide,
+      bool pinned,
+      String headerTooltip,
+      String valueGetter,
+      Function headerCellRenderer,
+      Func1<RendererParam, String> headerCellTemplate,
+      int width,
+      int maxWidth,
+      int minWidth,
+      cellClass,
+      cellStyle,
+      Func1<RendererParam, String> cellRenderer,
+      Func1<RendererParam, String> floatingCellRenderer,
+      String aggFunc,
+      int rowGroupIndex,
+      bool suppressMenu,
+      bool suppressSorting,
+      bool suppressMovable,
+      bool unSortIcon,
+      bool suppressSizeToFit,
+      bool suppressResize,
+      bool suppressAutoSize,
+      checkboxSelection,
+      Func1<RendererParam, String> headerValueGetter});
 }
