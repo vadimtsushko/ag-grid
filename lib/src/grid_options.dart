@@ -22,6 +22,7 @@ class GridOptions {
   external bool get enableServerSideSorting;
   external bool get enableFilter;
   external bool get enableServerSideFilter;
+  external GridApi get api;
   external LocaleText get localeText;
 
   ///Type of row selection, set to either 'single' or 'multiple' to enable selection

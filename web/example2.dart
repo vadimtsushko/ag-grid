@@ -18,16 +18,6 @@ headerCellRendererFunc(RendererParam params) {
       params.api.deselectAll();
     }
   });
-//
-//
-//  cb.addEventListener('change', (e) {
-//  if ($(this)[0].checked) {
-//  $scope.gridOptions.api.selectAll();
-//  } else {
-//  $scope.gridOptions.api.deselectAll();
-//  }
-//  });
-
   return cb;
 }
 
