@@ -64,6 +64,7 @@ void main() {
       rowDeselection: true,
 //      suppressRowClickSelection: true,
       suppressCellSelection: true,
+      localeText: russianLocale(),
       enableColResize: true);
   Grid grid = new Grid(gridDiv, go);
 }

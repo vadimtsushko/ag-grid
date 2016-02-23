@@ -5,7 +5,6 @@ import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 
-import "package:js/js.dart";
 
 void main() {
   initialiseAgGridWithWebComponents();
