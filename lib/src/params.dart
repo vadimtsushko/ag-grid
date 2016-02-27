@@ -7,5 +7,8 @@ class BaseParam {
   external GridApi get api;
 }
 
+@JS()
+@anonymous
 class RendererParam extends BaseParam{
+  external RowNode get node;
 }

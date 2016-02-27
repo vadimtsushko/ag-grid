@@ -7,24 +7,26 @@ import "dart:js";
 import 'dart:convert';
 import "package:js/js.dart";
 import 'package:ag_grid/src/object_api.dart' as obj;
+import 'dart:async';
+import 'dart:math' as math;
 
 rowNumCellRendererFunc(RendererParam params) {
-//  var map = obj.toMap(params);
-//  print('Params : $map');
+//  var keys = obj.keys(p);
+//  print('Params keys: $keys');
   return params.node.id + 1;
 }
 
 main() async {
   initialiseAgGridWithWebComponents();
   var gridDiv = querySelector('#myGrid');
-
+  GridOptions gridOptions;
+  List allOfTheData;
   var columnDefs = [
     new ColumnDef(
         headerName: '#',
         width: 50,
         cellRenderer: allowInterop(rowNumCellRendererFunc),
         suppressMenu: true,
-        suppressSorting: true,
         pinned: true),
     new ColumnDef(headerName: "Athlete", field: "athlete", width: 150),
     new ColumnDef(headerName: "Age", field: "age", width: 90),
@@ -38,11 +40,40 @@ main() async {
     new ColumnDef(headerName: "Total", field: "total", width: 100)
   ];
 
-//  var pageSize = 500;
+  var pageSize = 500;
 
+  getRows(GetRowsParam params) async {
+    print('asking for ${params.startRow} to  ${params.endRow}');
+    await new Future.delayed(new Duration(microseconds: 5000), () {
+      var lastRow = -1;
+      if (allOfTheData.length <= params.endRow) {
+        lastRow = allOfTheData.length;
+      }
 
+      var rowsThisPage = allOfTheData.sublist(
+          params.startRow, math.min(params.endRow, allOfTheData.length));
+      params.successCallback(rowsThisPage, lastRow);
+    });
+  }
+  createNewDatasource() {
+    if (allOfTheData == null) {
+      // in case user selected 'onPageSizeChanged()' before the json was loaded
+      return;
+    }
 
-  GridOptions gridOptions = new GridOptions(
+    var dataSource = new Datasource(
+        //rowCount: ???, - not setting the row count, infinite paging will be used
+        pageSize: pageSize, // changing to number, as scope keeps it as a string
+        getRows: allowInterop(getRows));
+
+    gridOptions.api.setDatasource(dataSource);
+  }
+  setRowData(rowData) {
+    allOfTheData = rowData;
+    createNewDatasource();
+  }
+
+  gridOptions = new GridOptions(
       columnDefs: columnDefs,
       enableFilter: true,
       enableSorting: true,
@@ -52,7 +83,7 @@ main() async {
       enableColResize: true);
   Grid grid = new Grid(gridDiv, gridOptions);
   var path = 'olympicWinners.json';
-  var allOfTheData = JSON.decode(await HttpRequest.getString(path));
+  allOfTheData = JSON.decode(await HttpRequest.getString(path));
   var rowData = new JsObject.jsify(allOfTheData);
-  gridOptions.api.setRowData(rowData);
+  setRowData(rowData);
 }
