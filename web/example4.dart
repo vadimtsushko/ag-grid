@@ -43,6 +43,10 @@ main() async {
   var pageSize = 500;
 
   getRows(GetRowsParam params) async {
+    // this code should contact the server for rows. however for the purposes of the demo,
+    // the data is generated locally, a timer is used to give the experience of
+    // an asynchronous call
+
     print('asking for ${params.startRow} to  ${params.endRow}');
     await new Future.delayed(new Duration(microseconds: 5000), () {
       var lastRow = -1;
