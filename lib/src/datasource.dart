@@ -8,8 +8,16 @@ class GetRowsParam {
   external int get endRow;
   external VoidFunc2<dynamic,int> get successCallback;
   external VoidFunc0 get failCallback;
+  external List<SortModelItem> get sortModel;
+  external get filterModel;
 }
 
+@JS()
+@anonymous
+class SortModelItem {
+  external String get colId;
+  external String get sort;
+}
 
 
 

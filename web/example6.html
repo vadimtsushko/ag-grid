@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<!--
+  Copyright (c) 2016, <your name>. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ag_wc</title>
+    <script defer src="example6.dart" type="application/dart"></script>
+    <script defer src="packages/browser/dart.js"></script>
+    <script src="dist/ag-grid.js?ignore=notused18"></script>
+</head>
+
+<body>
+<h4>Example - Virtual Paging / Infinite Scrolling widh Server Side Sorting and Filtering</h4>
+<p>
+    Virtual paging allows the grid to lazy load rows from the server depending on what the scroll position is of the grid.
+
+    If the grid knows how many pages in total at the start, the scroll will be sized to match the entire data set despite the data set not loaded from the server.
+
+    If the grid does not know how many pages at the start, the scroll will extend automatically until the last row is reached. This feature is known in other grids as <b>infinite scrolling</b>.
+
+</p>
+
+<p>The columns <b>Age</b>, <b>Country</b> and <b>Year</b> can be filtered. When this happens, the datasource is called again with the new filtering options.
+Note that the set filters are provided with the list of available values. This is because it is not possible for the grid to know the entire set of values as they reside on the server.</p>
+<a href="https://www.ag-grid.com/angular-grid-virtual-paging/index.php">Related page in ag-grid docs (second sample)</a>
+<hr>
+<div id="myGrid" class="ag-fresh" style="height: 400px; width: 800px;"></div>
+
+</body>
+</html>

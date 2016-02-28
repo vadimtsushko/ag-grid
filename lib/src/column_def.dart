@@ -130,6 +130,13 @@ class ColumnDef extends AbstractColDef {
   /** Set to true if you do not want this column to be auto-resizable by double clicking it's edge. */
   external bool get suppressAutoSize;
 
+  /** one of the built in filter names: [set, number, text], or a filter function*/
+  external String get filter;
+  /** The filter params are specific to each filter! */
+  external FilterParams get filterParams;
+
+
+
   external factory ColumnDef(
       {String headerName,
       String columnGroupShow,
@@ -162,5 +169,7 @@ class ColumnDef extends AbstractColDef {
       bool suppressResize,
       bool suppressAutoSize,
       checkboxSelection,
+      String filter,
+      FilterParams filterParams,
       Func1<RendererParam, String> headerValueGetter});
 }

@@ -9,6 +9,7 @@ class BaseParam {
 
 @JS()
 @anonymous
-class RendererParam extends BaseParam{
+class RendererParam extends BaseParam {
   external RowNode get node;
 }
+
