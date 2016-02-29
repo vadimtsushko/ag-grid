@@ -1,34 +1,5 @@
 part of agGrid;
 
-@JS()
-@anonymous
-class CsvExportParams {
-  external bool get skipHeader;
-  external set skipHeader(bool v);
-  external bool get skipFooters;
-  external set skipFooters(bool v);
-  external bool get skipGroups;
-  external set skipGroups(bool v);
-  external bool get allColumns;
-  external set allColumns(bool v);
-  external String get fileName;
-  external set fileName(String v);
-  external String get customHeader;
-  external set customHeader(String v);
-  external String get customFooter;
-  external set customFooter(String v);
-  external String get columnSeparator;
-  external set columnSeparator(String v);
-  external factory CsvExportParams(
-      {bool skipHeader,
-      bool skipFooters,
-      bool skipGroups,
-      bool allColumns,
-      String fileName,
-      String customHeader,
-      String customFooter,
-      String columnSeparator});
-}
 
 @JS()
 class GridApi {
