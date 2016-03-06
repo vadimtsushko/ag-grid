@@ -1,1 +1,1 @@
-export 'src/ag_grid.dart';
+export 'interop/ag_grid.dart';

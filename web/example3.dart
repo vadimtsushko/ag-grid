@@ -6,7 +6,7 @@ import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 import 'dart:convert';
 import "package:js/js.dart";
-import 'package:ag_grid/src/object_api.dart' as obj;
+import 'package:ag_grid/interop/object_api.dart' as obj;
 
 rowNumCellRendererFunc(RendererParam params) {
 //  var map = obj.toMap(params);

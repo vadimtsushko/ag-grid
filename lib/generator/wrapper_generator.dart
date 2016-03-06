@@ -87,7 +87,7 @@ class WrapperGenerator {
     output.write(
         '  external ${propertyGenerator.type} get ${propertyGenerator.name};\n');
     output.write(
-        '  external set ${propertyGenerator.name} (${propertyGenerator.type} value);\n');
+        '  external set ${propertyGenerator.name}(${propertyGenerator.type} value);\n');
   }
 
   processAll() {

@@ -5,17 +5,17 @@ part of agGrid;
 @anonymous
 class GetRowsParam {
   external int get startRow;
-  external set startRow (int value);
+  external set startRow(int value);
   external int get endRow;
-  external set endRow (int value);
+  external set endRow(int value);
   external VoidFunc2<dynamic, int> get successCallback;
-  external set successCallback (VoidFunc2<dynamic, int> value);
+  external set successCallback(VoidFunc2<dynamic, int> value);
   external VoidFunc0 get failCallback;
-  external set failCallback (VoidFunc0 value);
+  external set failCallback(VoidFunc0 value);
   external List<SortModelItem> get sortModel;
-  external set sortModel (List<SortModelItem> value);
+  external set sortModel(List<SortModelItem> value);
   external dynamic get filterModel;
-  external set filterModel (dynamic value);
+  external set filterModel(dynamic value);
   external factory GetRowsParam ({
     int startRow,
     int endRow,
@@ -29,9 +29,9 @@ class GetRowsParam {
 @anonymous
 class BaseParam {
   external ColumnDef get colDef;
-  external set colDef (ColumnDef value);
+  external set colDef(ColumnDef value);
   external GridApi get api;
-  external set api (GridApi value);
+  external set api(GridApi value);
   external factory BaseParam ({
     ColumnDef colDef,
     GridApi api});
@@ -41,17 +41,17 @@ class BaseParam {
 @anonymous
 class Datasource {
   external int get pageSize;
-  external set pageSize (int value);
+  external set pageSize(int value);
   external int get rowCount;
-  external set rowCount (int value);
+  external set rowCount(int value);
   external int get overflowSize;
-  external set overflowSize (int value);
+  external set overflowSize(int value);
   external int get maxConcurrentRequests;
-  external set maxConcurrentRequests (int value);
+  external set maxConcurrentRequests(int value);
   external int get maxPagesInCache;
-  external set maxPagesInCache (int value);
+  external set maxPagesInCache(int value);
   external VoidFunc1<GetRowsParam> get getRows;
-  external set getRows (VoidFunc1<GetRowsParam> value);
+  external set getRows(VoidFunc1<GetRowsParam> value);
   external factory Datasource ({
     int pageSize,
     int rowCount,
@@ -65,17 +65,17 @@ class Datasource {
 @anonymous
 class FilterParams {
   external Func1<RendererParam, String> get cellRenderer;
-  external set cellRenderer (Func1<RendererParam, String> value);
+  external set cellRenderer(Func1<RendererParam, String> value);
   external int get cellHeight;
-  external set cellHeight (int value);
+  external set cellHeight(int value);
   external List get values;
-  external set values (List value);
+  external set values(List value);
   external String get newRowsAction;
-  external set newRowsAction (String value);
+  external set newRowsAction(String value);
   external bool get apply;
-  external set apply (bool value);
+  external set apply(bool value);
   external bool get suppressRemoveEntries;
-  external set suppressRemoveEntries (bool value);
+  external set suppressRemoveEntries(bool value);
   external factory FilterParams ({
     Func1<RendererParam, String> cellRenderer,
     int cellHeight,
@@ -89,21 +89,21 @@ class FilterParams {
 @anonymous
 class CsvExportParams {
   external bool get skipHeader;
-  external set skipHeader (bool value);
+  external set skipHeader(bool value);
   external bool get skipFooters;
-  external set skipFooters (bool value);
+  external set skipFooters(bool value);
   external bool get skipGroups;
-  external set skipGroups (bool value);
+  external set skipGroups(bool value);
   external bool get allColumns;
-  external set allColumns (bool value);
+  external set allColumns(bool value);
   external String get fileName;
-  external set fileName (String value);
+  external set fileName(String value);
   external String get customHeader;
-  external set customHeader (String value);
+  external set customHeader(String value);
   external String get customFooter;
-  external set customFooter (String value);
+  external set customFooter(String value);
   external String get columnSeparator;
-  external set columnSeparator (String value);
+  external set columnSeparator(String value);
   external factory CsvExportParams ({
     bool skipHeader,
     bool skipFooters,
@@ -119,51 +119,51 @@ class CsvExportParams {
 @anonymous
 class GridOptions {
   external GridApi get api;
-  external set api (GridApi value);
+  external set api(GridApi value);
   external List<ColumnDef> get columnDefs;
-  external set columnDefs (List<ColumnDef> value);
+  external set columnDefs(List<ColumnDef> value);
   external dynamic get rowData;
-  external set rowData (dynamic value);
+  external set rowData(dynamic value);
   external bool get virtualPaging;
-  external set virtualPaging (bool value);
+  external set virtualPaging(bool value);
   external bool get toolPanelSuppressGroups;
-  external set toolPanelSuppressGroups (bool value);
+  external set toolPanelSuppressGroups(bool value);
   external bool get toolPanelSuppressValues;
-  external set toolPanelSuppressValues (bool value);
+  external set toolPanelSuppressValues(bool value);
   external bool get rowsAlreadyGrouped;
-  external set rowsAlreadyGrouped (bool value);
+  external set rowsAlreadyGrouped(bool value);
   external bool get suppressRowClickSelection;
-  external set suppressRowClickSelection (bool value);
+  external set suppressRowClickSelection(bool value);
   external bool get suppressMultiSort;
-  external set suppressMultiSort (bool value);
+  external set suppressMultiSort(bool value);
   external bool get suppressCellSelection;
-  external set suppressCellSelection (bool value);
+  external set suppressCellSelection(bool value);
   external List<String> get sortingOrder;
-  external set sortingOrder (List<String> value);
+  external set sortingOrder(List<String> value);
   external bool get suppressHorizontalScroll;
-  external set suppressHorizontalScroll (bool value);
+  external set suppressHorizontalScroll(bool value);
   external bool get unSortIcon;
-  external set unSortIcon (bool value);
+  external set unSortIcon(bool value);
   external int get rowBuffer;
-  external set rowBuffer (int value);
+  external set rowBuffer(int value);
   external bool get enableColResize;
-  external set enableColResize (bool value);
+  external set enableColResize(bool value);
   external bool get enableCellExpressions;
-  external set enableCellExpressions (bool value);
+  external set enableCellExpressions(bool value);
   external bool get enableSorting;
-  external set enableSorting (bool value);
+  external set enableSorting(bool value);
   external bool get enableServerSideSorting;
-  external set enableServerSideSorting (bool value);
+  external set enableServerSideSorting(bool value);
   external bool get enableFilter;
-  external set enableFilter (bool value);
+  external set enableFilter(bool value);
   external bool get rowDeselection;
-  external set rowDeselection (bool value);
+  external set rowDeselection(bool value);
   external String get rowSelection;
-  external set rowSelection (String value);
+  external set rowSelection(String value);
   external LocaleText get localeText;
-  external set localeText (LocaleText value);
+  external set localeText(LocaleText value);
   external bool get enableServerSideFilter;
-  external set enableServerSideFilter (bool value);
+  external set enableServerSideFilter(bool value);
   external factory GridOptions ({
     GridApi api,
     List<ColumnDef> columnDefs,
@@ -194,7 +194,7 @@ class GridOptions {
 @anonymous
 class RowNode {
   external int get id;
-  external set id (int value);
+  external set id(int value);
   external factory RowNode ({
     int id});
 }
@@ -203,57 +203,57 @@ class RowNode {
 @anonymous
 class LocaleText {
   external String get page;
-  external set page (String value);
+  external set page(String value);
   external String get more;
-  external set more (String value);
+  external set more(String value);
   external String get to;
-  external set to (String value);
+  external set to(String value);
   external String get of;
-  external set of (String value);
+  external set of(String value);
   external String get next;
-  external set next (String value);
+  external set next(String value);
   external String get last;
-  external set last (String value);
+  external set last(String value);
   external String get first;
-  external set first (String value);
+  external set first(String value);
   external String get previous;
-  external set previous (String value);
+  external set previous(String value);
   external String get loadingOoo;
-  external set loadingOoo (String value);
+  external set loadingOoo(String value);
   external String get selectAll;
-  external set selectAll (String value);
+  external set selectAll(String value);
   external String get searchOoo;
-  external set searchOoo (String value);
+  external set searchOoo(String value);
   external String get blanks;
-  external set blanks (String value);
+  external set blanks(String value);
   external String get equals;
-  external set equals (String value);
+  external set equals(String value);
   external String get lessThan;
-  external set lessThan (String value);
+  external set lessThan(String value);
   external String get greaterThan;
-  external set greaterThan (String value);
+  external set greaterThan(String value);
   external String get applyFilter;
-  external set applyFilter (String value);
+  external set applyFilter(String value);
   external String get filterOoo;
-  external set filterOoo (String value);
+  external set filterOoo(String value);
   external String get contains;
-  external set contains (String value);
+  external set contains(String value);
   external String get startsWith;
-  external set startsWith (String value);
+  external set startsWith(String value);
   external String get endsWith;
-  external set endsWith (String value);
+  external set endsWith(String value);
   external String get group;
-  external set group (String value);
+  external set group(String value);
   external String get columns;
-  external set columns (String value);
+  external set columns(String value);
   external String get groupColumns;
-  external set groupColumns (String value);
+  external set groupColumns(String value);
   external String get groupColumnsEmptyMessage;
-  external set groupColumnsEmptyMessage (String value);
+  external set groupColumnsEmptyMessage(String value);
   external String get valueColumns;
-  external set valueColumns (String value);
+  external set valueColumns(String value);
   external String get valueColumnsEmptyMessage;
-  external set valueColumnsEmptyMessage (String value);
+  external set valueColumnsEmptyMessage(String value);
   external factory LocaleText ({
     String page,
     String more,
@@ -287,11 +287,11 @@ class LocaleText {
 @anonymous
 class AbstractColDef {
   external String get headerName;
-  external set headerName (String value);
+  external set headerName(String value);
   external String get columnGroupShow;
-  external set columnGroupShow (String value);
+  external set columnGroupShow(String value);
   external dynamic get headerClass;
-  external set headerClass (dynamic value);
+  external set headerClass(dynamic value);
   external factory AbstractColDef ({
     String headerName,
     String columnGroupShow,
@@ -302,9 +302,9 @@ class AbstractColDef {
 @anonymous
 class SortModelItem {
   external String get colId;
-  external set colId (String value);
+  external set colId(String value);
   external String get sort;
-  external set sort (String value);
+  external set sort(String value);
   external factory SortModelItem ({
     String colId,
     String sort});
@@ -314,15 +314,15 @@ class SortModelItem {
 @anonymous
 class ColGroupDef {
   external List<AbstractColDef> get children;
-  external set children (List<AbstractColDef> value);
+  external set children(List<AbstractColDef> value);
   external String get groupId;
-  external set groupId (String value);
+  external set groupId(String value);
   external String get headerName;
-  external set headerName (String value);
+  external set headerName(String value);
   external String get columnGroupShow;
-  external set columnGroupShow (String value);
+  external set columnGroupShow(String value);
   external dynamic get headerClass;
-  external set headerClass (dynamic value);
+  external set headerClass(dynamic value);
   external factory ColGroupDef ({
     List<AbstractColDef> children,
     String groupId,
@@ -335,73 +335,73 @@ class ColGroupDef {
 @anonymous
 class ColumnDef {
   external String get headerName;
-  external set headerName (String value);
+  external set headerName(String value);
   external String get columnGroupShow;
-  external set columnGroupShow (String value);
+  external set columnGroupShow(String value);
   external dynamic get headerClass;
-  external set headerClass (dynamic value);
+  external set headerClass(dynamic value);
   external String get colId;
-  external set colId (String value);
+  external set colId(String value);
   external String get sort;
-  external set sort (String value);
+  external set sort(String value);
   external String get field;
-  external set field (String value);
+  external set field(String value);
   external int get sortedAt;
-  external set sortedAt (int value);
+  external set sortedAt(int value);
   external List<String> get sortingOrder;
-  external set sortingOrder (List<String> value);
+  external set sortingOrder(List<String> value);
   external bool get hide;
-  external set hide (bool value);
+  external set hide(bool value);
   external bool get pinned;
-  external set pinned (bool value);
+  external set pinned(bool value);
   external String get headerTooltip;
-  external set headerTooltip (String value);
+  external set headerTooltip(String value);
   external String get valueGetter;
-  external set valueGetter (String value);
+  external set valueGetter(String value);
   external Function get headerCellRenderer;
-  external set headerCellRenderer (Function value);
+  external set headerCellRenderer(Function value);
   external Func1<RendererParam, String> get headerCellTemplate;
-  external set headerCellTemplate (Func1<RendererParam, String> value);
+  external set headerCellTemplate(Func1<RendererParam, String> value);
   external int get width;
-  external set width (int value);
+  external set width(int value);
   external int get maxWidth;
-  external set maxWidth (int value);
+  external set maxWidth(int value);
   external int get minWidth;
-  external set minWidth (int value);
+  external set minWidth(int value);
   external dynamic get cellClass;
-  external set cellClass (dynamic value);
+  external set cellClass(dynamic value);
   external dynamic get cellStyle;
-  external set cellStyle (dynamic value);
+  external set cellStyle(dynamic value);
   external Func1<RendererParam, String> get cellRenderer;
-  external set cellRenderer (Func1<RendererParam, String> value);
+  external set cellRenderer(Func1<RendererParam, String> value);
   external Func1<RendererParam, String> get floatingCellRenderer;
-  external set floatingCellRenderer (Func1<RendererParam, String> value);
+  external set floatingCellRenderer(Func1<RendererParam, String> value);
   external String get aggFunc;
-  external set aggFunc (String value);
+  external set aggFunc(String value);
   external int get rowGroupIndex;
-  external set rowGroupIndex (int value);
+  external set rowGroupIndex(int value);
   external bool get suppressMenu;
-  external set suppressMenu (bool value);
+  external set suppressMenu(bool value);
   external bool get suppressSorting;
-  external set suppressSorting (bool value);
+  external set suppressSorting(bool value);
   external bool get suppressMovable;
-  external set suppressMovable (bool value);
+  external set suppressMovable(bool value);
   external bool get unSortIcon;
-  external set unSortIcon (bool value);
+  external set unSortIcon(bool value);
   external bool get suppressSizeToFit;
-  external set suppressSizeToFit (bool value);
+  external set suppressSizeToFit(bool value);
   external bool get suppressResize;
-  external set suppressResize (bool value);
+  external set suppressResize(bool value);
   external bool get suppressAutoSize;
-  external set suppressAutoSize (bool value);
+  external set suppressAutoSize(bool value);
   external dynamic get checkboxSelection;
-  external set checkboxSelection (dynamic value);
+  external set checkboxSelection(dynamic value);
   external String get filter;
-  external set filter (String value);
+  external set filter(String value);
   external FilterParams get filterParams;
-  external set filterParams (FilterParams value);
+  external set filterParams(FilterParams value);
   external Func1<RendererParam, String> get headerValueGetter;
-  external set headerValueGetter (Func1<RendererParam, String> value);
+  external set headerValueGetter(Func1<RendererParam, String> value);
   external factory ColumnDef ({
     String headerName,
     String columnGroupShow,
@@ -443,11 +443,11 @@ class ColumnDef {
 @anonymous
 class RendererParam {
   external ColumnDef get colDef;
-  external set colDef (ColumnDef value);
+  external set colDef(ColumnDef value);
   external GridApi get api;
-  external set api (GridApi value);
+  external set api(GridApi value);
   external RowNode get node;
-  external set node (RowNode value);
+  external set node(RowNode value);
   external factory RendererParam ({
     ColumnDef colDef,
     GridApi api,

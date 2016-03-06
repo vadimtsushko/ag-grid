@@ -6,7 +6,7 @@ import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 import 'dart:convert';
 import "package:js/js.dart";
-import 'package:ag_grid/src/object_api.dart' as jsObjApi;
+import 'package:ag_grid/js_object_api.dart' as jsObjApi;
 import 'dart:async';
 import 'dart:math' as math;
 

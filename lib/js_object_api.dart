@@ -1,0 +1,1 @@
+export 'interop/object_api.dart';
