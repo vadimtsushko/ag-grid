@@ -71,11 +71,11 @@ List filterData(filterModel, List data) {
       if (age == null) {
         continue;
       }
-      if (ageFilterType == FilterType.EQUALS) {
+      if (ageFilterType == NumberFilterType.EQUALS) {
         if (age != ageFilterValue) {
           continue;
         }
-      } else if (ageFilterType == FilterType.LESS_THAN) {
+      } else if (ageFilterType == NumberFilterType.LESS_THAN) {
         if (age >= ageFilterValue) {
           continue;
         }

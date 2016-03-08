@@ -37,6 +37,50 @@ class LocaleText {
 
 class RowNode {
   int id;
+
+  var data;
+
+  RowNode parent;
+  /** How many levels this node is from the top */
+  int level;
+  /** True if this node is a group node (ie has children) */
+  bool group;
+  /** True if this is the first child in this group */
+  bool firstChild;
+  /** True if this is the last child in this group */
+  bool lastChild;
+  /** The index of this node in the group */
+  int childIndex;
+  /** True if this row is a floating row */
+  bool floating;
+  /** True if this row is a floating top row */
+  bool floatingTop;
+  /** True if this row is a floating bottom row */
+  bool floatingBottom;
+  /** If using quick filter, stores a string representation of the row for searching against */
+  String quickFilterAggregateText;
+  /** Groups only - True if row is a footer. Footers  have group = true and footer = true */
+  bool footer;
+  /** Groups only - Children of this group */
+  List<RowNode> children;
+  /** Groups only - The field we are grouping on eg Country*/
+  String field;
+  /** Groups only - The key for the group eg Ireland, UK, USA */
+  var key;
+  /** Groups only - Filtered children of this group */
+  List<RowNode> childrenAfterFilter;
+  /** Groups only - Sorted children of this group */
+  List<RowNode> childrenAfterSort;
+  /** Groups only - Number of children and grand children */
+  int allChildrenCount;
+  /** Groups only - True if group is expanded, otherwise false */
+  bool expanded;
+  /** Groups only - If doing footers, reference to the footer node for this group */
+  RowNode sibling;
+  /** The height, in pixels, of this row */
+  num rowHeight;
+  /** The top pixel for this row */
+  num rowTop;
 }
 
 class BaseParam {
@@ -48,6 +92,7 @@ class RendererParam {
   ColumnDef colDef;
   GridApi api;
   RowNode node;
+  var data;
 }
 
 class ColumnDef {
@@ -70,7 +115,8 @@ class ColumnDef {
   int minWidth;
   var cellClass;
   var cellStyle;
-  Func1<RendererParam, String> cellRenderer;
+  //Func1<RendererParam, String> cellRenderer;
+  var cellRenderer;
   Func1<RendererParam, String> floatingCellRenderer;
   String aggFunc;
   int rowGroupIndex;
@@ -168,6 +214,33 @@ class GridOptions {
   String rowSelection;
   LocaleText localeText;
   bool enableServerSideFilter;
+  StringIcons icons;
+  VoidFunc1<RendererParam> onRowClicked;
+}
+
+class StringIcons {
+  String menu;
+  String filter;
+  String sortAscending;
+  String sortDescending;
+  String sortUnSort;
+  String groupExpanded;
+  String groupContracted;
+  String columnGroupOpened;
+  String columnGroupClosed;
+  String columnVisible;
+  String columnHidden;
+  String columnRemoveFromGroup;
+}
+
+class GroupCellRenderer {
+  String renderer;
+  var keyMap;
+  bool suppressCount;
+  bool checkbox;
+  int padding;
+  var innerRenderer;
+  var footerValueGetter;
 }
 
 main() {

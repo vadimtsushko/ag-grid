@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<!--
+  Copyright (c) 2016, <your name>. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link href="https:////maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="file_browser/fileBrowser.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ag_wc</title>
+    <script defer src="file_browser.dart" type="application/dart"></script>
+    <script defer src="packages/browser/dart.js"></script>
+    <script src="dist/ag-grid.js?ignore=notused18"></script>
+
+</head>
+
+<body>
+<h2>File Browser</h2>
+<p>The example below shows how you can make complex tree structure using ag-Grid.</p>
+<p>Notice that the data passed to the grid is already in a tree structure, it is not using the grids grouping functions to create the hierarchy.</p>
+<a href="https://www.ag-grid.com/example-file-browser/index.php">Related sample in ag-grid docs</a>
+  <hr>
+  <div style="border: 1px solid darkgrey;
+                width: 600px;
+                background-color: lightgrey;
+                border-radius: 5px;
+                padding: 3px;">
+      <div style="border: 1px solid darkgrey; padding-left: 10px; margin-bottom: 2px; background-color: white;" id="selectedFile">Select a file below...</div>
+      <div style="width: 100%; height: 400px;"
+           id="myGrid"
+           class="ag-file-browser">
+      </div>
+  </div>
+
+</body>
+</html>

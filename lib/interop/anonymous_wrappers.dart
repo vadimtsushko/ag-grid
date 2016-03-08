@@ -164,6 +164,10 @@ class GridOptions {
   external set localeText(LocaleText value);
   external bool get enableServerSideFilter;
   external set enableServerSideFilter(bool value);
+  external StringIcons get icons;
+  external set icons(StringIcons value);
+  external VoidFunc1<RendererParam> get onRowClicked;
+  external set onRowClicked(VoidFunc1<RendererParam> value);
   external factory GridOptions ({
     GridApi api,
     List<ColumnDef> columnDefs,
@@ -187,7 +191,9 @@ class GridOptions {
     bool rowDeselection,
     String rowSelection,
     LocaleText localeText,
-    bool enableServerSideFilter});
+    bool enableServerSideFilter,
+    StringIcons icons,
+    VoidFunc1<RendererParam> onRowClicked});
 }
 
 @JS()
@@ -195,8 +201,74 @@ class GridOptions {
 class RowNode {
   external int get id;
   external set id(int value);
+  external dynamic get data;
+  external set data(dynamic value);
+  external RowNode get parent;
+  external set parent(RowNode value);
+  external int get level;
+  external set level(int value);
+  external bool get group;
+  external set group(bool value);
+  external bool get firstChild;
+  external set firstChild(bool value);
+  external bool get lastChild;
+  external set lastChild(bool value);
+  external int get childIndex;
+  external set childIndex(int value);
+  external bool get floating;
+  external set floating(bool value);
+  external bool get floatingTop;
+  external set floatingTop(bool value);
+  external bool get floatingBottom;
+  external set floatingBottom(bool value);
+  external String get quickFilterAggregateText;
+  external set quickFilterAggregateText(String value);
+  external bool get footer;
+  external set footer(bool value);
+  external List<RowNode> get children;
+  external set children(List<RowNode> value);
+  external String get field;
+  external set field(String value);
+  external dynamic get key;
+  external set key(dynamic value);
+  external List<RowNode> get childrenAfterFilter;
+  external set childrenAfterFilter(List<RowNode> value);
+  external List<RowNode> get childrenAfterSort;
+  external set childrenAfterSort(List<RowNode> value);
+  external int get allChildrenCount;
+  external set allChildrenCount(int value);
+  external bool get expanded;
+  external set expanded(bool value);
+  external RowNode get sibling;
+  external set sibling(RowNode value);
+  external num get rowHeight;
+  external set rowHeight(num value);
+  external num get rowTop;
+  external set rowTop(num value);
   external factory RowNode ({
-    int id});
+    int id,
+    dynamic data,
+    RowNode parent,
+    int level,
+    bool group,
+    bool firstChild,
+    bool lastChild,
+    int childIndex,
+    bool floating,
+    bool floatingTop,
+    bool floatingBottom,
+    String quickFilterAggregateText,
+    bool footer,
+    List<RowNode> children,
+    String field,
+    dynamic key,
+    List<RowNode> childrenAfterFilter,
+    List<RowNode> childrenAfterSort,
+    int allChildrenCount,
+    bool expanded,
+    RowNode sibling,
+    num rowHeight,
+    num rowTop});
 }
 
 @JS()
@@ -312,6 +384,75 @@ class SortModelItem {
 
 @JS()
 @anonymous
+class StringIcons {
+  external String get menu;
+  external set menu(String value);
+  external String get filter;
+  external set filter(String value);
+  external String get sortAscending;
+  external set sortAscending(String value);
+  external String get sortDescending;
+  external set sortDescending(String value);
+  external String get sortUnSort;
+  external set sortUnSort(String value);
+  external String get groupExpanded;
+  external set groupExpanded(String value);
+  external String get groupContracted;
+  external set groupContracted(String value);
+  external String get columnGroupOpened;
+  external set columnGroupOpened(String value);
+  external String get columnGroupClosed;
+  external set columnGroupClosed(String value);
+  external String get columnVisible;
+  external set columnVisible(String value);
+  external String get columnHidden;
+  external set columnHidden(String value);
+  external String get columnRemoveFromGroup;
+  external set columnRemoveFromGroup(String value);
+  external factory StringIcons ({
+    String menu,
+    String filter,
+    String sortAscending,
+    String sortDescending,
+    String sortUnSort,
+    String groupExpanded,
+    String groupContracted,
+    String columnGroupOpened,
+    String columnGroupClosed,
+    String columnVisible,
+    String columnHidden,
+    String columnRemoveFromGroup});
+}
+
+@JS()
+@anonymous
+class GroupCellRenderer {
+  external String get renderer;
+  external set renderer(String value);
+  external dynamic get keyMap;
+  external set keyMap(dynamic value);
+  external bool get suppressCount;
+  external set suppressCount(bool value);
+  external bool get checkbox;
+  external set checkbox(bool value);
+  external int get padding;
+  external set padding(int value);
+  external dynamic get innerRenderer;
+  external set innerRenderer(dynamic value);
+  external dynamic get footerValueGetter;
+  external set footerValueGetter(dynamic value);
+  external factory GroupCellRenderer ({
+    String renderer,
+    dynamic keyMap,
+    bool suppressCount,
+    bool checkbox,
+    int padding,
+    dynamic innerRenderer,
+    dynamic footerValueGetter});
+}
+
+@JS()
+@anonymous
 class ColGroupDef {
   external List<AbstractColDef> get children;
   external set children(List<AbstractColDef> value);
@@ -372,8 +513,8 @@ class ColumnDef {
   external set cellClass(dynamic value);
   external dynamic get cellStyle;
   external set cellStyle(dynamic value);
-  external Func1<RendererParam, String> get cellRenderer;
-  external set cellRenderer(Func1<RendererParam, String> value);
+  external dynamic get cellRenderer;
+  external set cellRenderer(dynamic value);
   external Func1<RendererParam, String> get floatingCellRenderer;
   external set floatingCellRenderer(Func1<RendererParam, String> value);
   external String get aggFunc;
@@ -422,7 +563,7 @@ class ColumnDef {
     int minWidth,
     dynamic cellClass,
     dynamic cellStyle,
-    Func1<RendererParam, String> cellRenderer,
+    dynamic cellRenderer,
     Func1<RendererParam, String> floatingCellRenderer,
     String aggFunc,
     int rowGroupIndex,
@@ -448,9 +589,12 @@ class RendererParam {
   external set api(GridApi value);
   external RowNode get node;
   external set node(RowNode value);
+  external dynamic get data;
+  external set data(dynamic value);
   external factory RendererParam ({
     ColumnDef colDef,
     GridApi api,
-    RowNode node});
+    RowNode node,
+    dynamic data});
 }
 
