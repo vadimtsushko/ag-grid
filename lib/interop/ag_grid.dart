@@ -19,8 +19,14 @@ class Grid {
 
 
 
-class FilterType {
-  static const int EQUALS = 1;
-  static const int LESS_THAN = 2;
-  static const int GREATER_THAN = 3;
+class NumberFilterType {
+  static const EQUALS = 1;
+  static const LESS_THAN = 2;
+  static const GREATER_THAN = 3;
+}
+class TextFilterType {
+  static const CONTAINS = 1;
+  static const EQUALS = 2;
+  static const STARTS_WITH = 3;
+  static const ENDS_WITH = 4;
 }

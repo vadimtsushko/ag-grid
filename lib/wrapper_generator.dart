@@ -1,0 +1,1 @@
+export 'generator/wrapper_generator.dart';
