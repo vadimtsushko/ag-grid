@@ -93,6 +93,8 @@ class RendererParam {
   GridApi api;
   RowNode node;
   var data;
+  var newValue;
+  var oldValue;
 }
 
 class ColumnDef {
@@ -105,6 +107,7 @@ class ColumnDef {
   int sortedAt;
   List<String> sortingOrder;
   bool hide;
+  bool editable;
   bool pinned;
   String headerTooltip;
   String valueGetter;
@@ -118,6 +121,8 @@ class ColumnDef {
   //Func1<RendererParam, String> cellRenderer;
   var cellRenderer;
   Func1<RendererParam, String> floatingCellRenderer;
+  VoidFunc1<RendererParam> newValueHandler;
+  VoidFunc1<RendererParam> onCellValueChanged;
   String aggFunc;
   int rowGroupIndex;
   bool suppressMenu;
@@ -215,6 +220,9 @@ class GridOptions {
   LocaleText localeText;
   bool enableServerSideFilter;
   StringIcons icons;
+  bool suppressMenuFilterPanel;
+  bool suppressMenuMainPanel;
+  bool suppressMenuColumnPanel;
   VoidFunc1<RendererParam> onRowClicked;
 }
 

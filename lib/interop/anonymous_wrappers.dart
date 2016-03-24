@@ -166,6 +166,12 @@ class GridOptions {
   external set enableServerSideFilter(bool value);
   external StringIcons get icons;
   external set icons(StringIcons value);
+  external bool get suppressMenuFilterPanel;
+  external set suppressMenuFilterPanel(bool value);
+  external bool get suppressMenuMainPanel;
+  external set suppressMenuMainPanel(bool value);
+  external bool get suppressMenuColumnPanel;
+  external set suppressMenuColumnPanel(bool value);
   external VoidFunc1<RendererParam> get onRowClicked;
   external set onRowClicked(VoidFunc1<RendererParam> value);
   external factory GridOptions ({
@@ -193,6 +199,9 @@ class GridOptions {
     LocaleText localeText,
     bool enableServerSideFilter,
     StringIcons icons,
+    bool suppressMenuFilterPanel,
+    bool suppressMenuMainPanel,
+    bool suppressMenuColumnPanel,
     VoidFunc1<RendererParam> onRowClicked});
 }
 
@@ -493,6 +502,8 @@ class ColumnDef {
   external set sortingOrder(List<String> value);
   external bool get hide;
   external set hide(bool value);
+  external bool get editable;
+  external set editable(bool value);
   external bool get pinned;
   external set pinned(bool value);
   external String get headerTooltip;
@@ -517,6 +528,10 @@ class ColumnDef {
   external set cellRenderer(dynamic value);
   external Func1<RendererParam, String> get floatingCellRenderer;
   external set floatingCellRenderer(Func1<RendererParam, String> value);
+  external VoidFunc1<RendererParam> get newValueHandler;
+  external set newValueHandler(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onCellValueChanged;
+  external set onCellValueChanged(VoidFunc1<RendererParam> value);
   external String get aggFunc;
   external set aggFunc(String value);
   external int get rowGroupIndex;
@@ -553,6 +568,7 @@ class ColumnDef {
     int sortedAt,
     List<String> sortingOrder,
     bool hide,
+    bool editable,
     bool pinned,
     String headerTooltip,
     String valueGetter,
@@ -565,6 +581,8 @@ class ColumnDef {
     dynamic cellStyle,
     dynamic cellRenderer,
     Func1<RendererParam, String> floatingCellRenderer,
+    VoidFunc1<RendererParam> newValueHandler,
+    VoidFunc1<RendererParam> onCellValueChanged,
     String aggFunc,
     int rowGroupIndex,
     bool suppressMenu,
@@ -591,10 +609,16 @@ class RendererParam {
   external set node(RowNode value);
   external dynamic get data;
   external set data(dynamic value);
+  external dynamic get newValue;
+  external set newValue(dynamic value);
+  external dynamic get oldValue;
+  external set oldValue(dynamic value);
   external factory RendererParam ({
     ColumnDef colDef,
     GridApi api,
     RowNode node,
-    dynamic data});
+    dynamic data,
+    dynamic newValue,
+    dynamic oldValue});
 }
 
