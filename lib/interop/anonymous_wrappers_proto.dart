@@ -136,6 +136,7 @@ class ColumnDef {
   String filter;
   FilterParams filterParams;
   Func1<RendererParam, String> headerValueGetter;
+  bool volatile;
 }
 
 class AbstractColDef {

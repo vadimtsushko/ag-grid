@@ -558,6 +558,8 @@ class ColumnDef {
   external set filterParams(FilterParams value);
   external Func1<RendererParam, String> get headerValueGetter;
   external set headerValueGetter(Func1<RendererParam, String> value);
+  external bool get volatile;
+  external set volatile(bool value);
   external factory ColumnDef ({
     String headerName,
     String columnGroupShow,
@@ -595,7 +597,8 @@ class ColumnDef {
     dynamic checkboxSelection,
     String filter,
     FilterParams filterParams,
-    Func1<RendererParam, String> headerValueGetter});
+    Func1<RendererParam, String> headerValueGetter,
+    bool volatile});
 }
 
 @JS()
