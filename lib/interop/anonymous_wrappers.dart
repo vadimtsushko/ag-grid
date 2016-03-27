@@ -552,6 +552,8 @@ class ColumnDef {
   external set suppressAutoSize(bool value);
   external dynamic get checkboxSelection;
   external set checkboxSelection(dynamic value);
+  external Function get comparator;
+  external set comparator(Function value);
   external String get filter;
   external set filter(String value);
   external FilterParams get filterParams;
@@ -595,6 +597,7 @@ class ColumnDef {
     bool suppressResize,
     bool suppressAutoSize,
     dynamic checkboxSelection,
+    Function comparator,
     String filter,
     FilterParams filterParams,
     Func1<RendererParam, String> headerValueGetter,
@@ -616,12 +619,15 @@ class RendererParam {
   external set newValue(dynamic value);
   external dynamic get oldValue;
   external set oldValue(dynamic value);
+  external dynamic get value;
+  external set value(dynamic value);
   external factory RendererParam ({
     ColumnDef colDef,
     GridApi api,
     RowNode node,
     dynamic data,
     dynamic newValue,
-    dynamic oldValue});
+    dynamic oldValue,
+    dynamic value});
 }
 

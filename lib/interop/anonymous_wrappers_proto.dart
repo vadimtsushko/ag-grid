@@ -95,6 +95,7 @@ class RendererParam {
   var data;
   var newValue;
   var oldValue;
+  var value;
 }
 
 class ColumnDef {
@@ -133,6 +134,7 @@ class ColumnDef {
   bool suppressResize;
   bool suppressAutoSize;
   var checkboxSelection;
+  Function comparator;
   String filter;
   FilterParams filterParams;
   Func1<RendererParam, String> headerValueGetter;
