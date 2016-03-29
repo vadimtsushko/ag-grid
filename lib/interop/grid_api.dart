@@ -53,6 +53,7 @@ class GridApi {
   external void ensureColumnVisible(key);
   external void selectNode(node, bool tryMulti, bool suppressEvents);
   external void forEachNodeAfterFilter(Function callback);
+  external void destroy();
 
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;

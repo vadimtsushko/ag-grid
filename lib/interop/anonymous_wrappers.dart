@@ -117,6 +117,27 @@ class CsvExportParams {
 
 @JS()
 @anonymous
+class getNodeChildDetailsResult {
+  external bool get group;
+  external set group(bool value);
+  external List get children;
+  external set children(List value);
+  external bool get expanded;
+  external set expanded(bool value);
+  external String get field;
+  external set field(String value);
+  external String get key;
+  external set key(String value);
+  external factory getNodeChildDetailsResult ({
+    bool group,
+    List children,
+    bool expanded,
+    String field,
+    String key});
+}
+
+@JS()
+@anonymous
 class GridOptions {
   external GridApi get api;
   external set api(GridApi value);
@@ -172,6 +193,8 @@ class GridOptions {
   external set suppressMenuMainPanel(bool value);
   external bool get suppressMenuColumnPanel;
   external set suppressMenuColumnPanel(bool value);
+  external Function get getNodeChildDetails;
+  external set getNodeChildDetails(Function value);
   external VoidFunc1<RendererParam> get onRowClicked;
   external set onRowClicked(VoidFunc1<RendererParam> value);
   external factory GridOptions ({
@@ -202,6 +225,7 @@ class GridOptions {
     bool suppressMenuFilterPanel,
     bool suppressMenuMainPanel,
     bool suppressMenuColumnPanel,
+    Function getNodeChildDetails,
     VoidFunc1<RendererParam> onRowClicked});
 }
 
@@ -602,6 +626,33 @@ class ColumnDef {
     FilterParams filterParams,
     Func1<RendererParam, String> headerValueGetter,
     bool volatile});
+}
+
+@JS()
+@anonymous
+class FileBrowserItem {
+  external bool get folder;
+  external set folder(bool value);
+  external bool get open;
+  external set open(bool value);
+  external String get name;
+  external set name(String value);
+  external String get size;
+  external set size(String value);
+  external String get type;
+  external set type(String value);
+  external String get dateModified;
+  external set dateModified(String value);
+  external List<FileBrowserItem> get children;
+  external set children(List<FileBrowserItem> value);
+  external factory FileBrowserItem ({
+    bool folder,
+    bool open,
+    String name,
+    String size,
+    String type,
+    String dateModified,
+    List<FileBrowserItem> children});
 }
 
 @JS()

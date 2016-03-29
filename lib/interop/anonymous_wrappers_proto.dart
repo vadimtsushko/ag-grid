@@ -226,7 +226,16 @@ class GridOptions {
   bool suppressMenuFilterPanel;
   bool suppressMenuMainPanel;
   bool suppressMenuColumnPanel;
+  Function getNodeChildDetails;
   VoidFunc1<RendererParam> onRowClicked;
+}
+
+class getNodeChildDetailsResult {
+  bool group;
+  List children;
+  bool expanded;
+  String field;
+  String key;
 }
 
 class StringIcons {
@@ -252,6 +261,16 @@ class GroupCellRenderer {
   int padding;
   var innerRenderer;
   var footerValueGetter;
+}
+
+class FileBrowserItem {
+  bool folder;
+  bool open;
+  String name;
+  String size;
+  String type;
+  String dateModified;
+  List<FileBrowserItem> children;
 }
 
 main() {
