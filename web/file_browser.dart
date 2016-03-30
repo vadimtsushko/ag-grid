@@ -6,7 +6,7 @@ import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 import 'package:ag_grid/js_object_api.dart' as js_object_api;
 
-
+GridApi api;
 innerCellRenderer(RendererParam params) {
   var image;
   if (params.node.group) {
@@ -15,22 +15,29 @@ innerCellRenderer(RendererParam params) {
     image = 'file';
   }
   var imageFullUrl = 'file_browser/' + image + '.png';
+  FileBrowserItem file = params.data;
   return '<img src="' +
       imageFullUrl +
-      '" style="padding-left: 4px;" /> ' +
-      js_object_api.getValue(params.data,'name');
+      '" style="padding-left: 4px;" /> ' + file.name;
 }
 
-rowClicked(RendererParam params) {
-  var node = params.node;
-  var path = js_object_api.getValue(params.node.data,'name');
-
+onCellFocused(RendererParam params) {
+  GridCell currentCell = api.getFocusedCell();
+  int rowIdx = currentCell.rowIndex;
+  RowModel rowModel = api.getModel();
+  RowNode node = rowModel.getRow(rowIdx);
+  FileBrowserItem item = node.data;
+  String name = item.name;
+  String path = name;
   while (node.parent != null) {
     node = node.parent;
-    path = js_object_api.getValue(node.data,'name') + '\\' + path;
+    item = node.data;
+
+    path = item.name + '\\' + path;
   }
 
   dom.querySelector('#selectedFile').setInnerHtml(path);
+
 }
 getNodeChildDetails(FileBrowserItem file) {
   if (file.folder) {
@@ -64,7 +71,7 @@ void main() {
   GridOptions go = new GridOptions(
       columnDefs: columnDefs,
       rowData: rowData,
-      rowSelection: 'multiple',
+      rowSelection: 'single',
       enableColResize: true,
       enableSorting: true,
       getNodeChildDetails: allowInterop(getNodeChildDetails),
@@ -73,9 +80,12 @@ void main() {
       icons: new StringIcons(
           groupExpanded: '<i class="fa fa-minus-square-o"/>',
           groupContracted: '<i class="fa fa-plus-square-o"/>'),
-      onRowClicked: allowInterop(rowClicked)
+//      onRowSelected: allowInterop(rowClicked),
+      onCellFocused: allowInterop(onCellFocused)
+
       );
-  Grid grid = new Grid(gridDiv, go);
+  new Grid(gridDiv, go);
+  api = go.api;
 }
 
 var rowDataArray = [

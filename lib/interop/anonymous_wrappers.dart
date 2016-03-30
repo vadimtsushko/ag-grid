@@ -195,8 +195,44 @@ class GridOptions {
   external set suppressMenuColumnPanel(bool value);
   external Function get getNodeChildDetails;
   external set getNodeChildDetails(Function value);
+  external VoidFunc1<RendererParam> get onCellClicked;
+  external set onCellClicked(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onCellDoubleClicked;
+  external set onCellDoubleClicked(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onCellContextMenu;
+  external set onCellContextMenu(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onCellValueChanged;
+  external set onCellValueChanged(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onCellFocused;
+  external set onCellFocused(VoidFunc1<RendererParam> value);
   external VoidFunc1<RendererParam> get onRowClicked;
   external set onRowClicked(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onRowDoubleClicked;
+  external set onRowDoubleClicked(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onRowSelected;
+  external set onRowSelected(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onRowDeselected;
+  external set onRowDeselected(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onGridReady;
+  external set onGridReady(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onVirtualRowRemoved;
+  external set onVirtualRowRemoved(VoidFunc1<RendererParam> value);
+  external VoidFunc1<RendererParam> get onGridSizeChanged;
+  external set onGridSizeChanged(VoidFunc1<RendererParam> value);
+  external VoidFunc0 get onModelUpdated;
+  external set onModelUpdated(VoidFunc0 value);
+  external VoidFunc0 get onSelectionChanged;
+  external set onSelectionChanged(VoidFunc0 value);
+  external VoidFunc0 get onBeforeFilterChanged;
+  external set onBeforeFilterChanged(VoidFunc0 value);
+  external VoidFunc0 get onAfterFilterChanged;
+  external set onAfterFilterChanged(VoidFunc0 value);
+  external VoidFunc0 get onFilterModified;
+  external set onFilterModified(VoidFunc0 value);
+  external VoidFunc0 get onBeforeSortChanged;
+  external set onBeforeSortChanged(VoidFunc0 value);
+  external VoidFunc0 get onAfterSortChanged;
+  external set onAfterSortChanged(VoidFunc0 value);
   external factory GridOptions ({
     GridApi api,
     List<ColumnDef> columnDefs,
@@ -226,7 +262,25 @@ class GridOptions {
     bool suppressMenuMainPanel,
     bool suppressMenuColumnPanel,
     Function getNodeChildDetails,
-    VoidFunc1<RendererParam> onRowClicked});
+    VoidFunc1<RendererParam> onCellClicked,
+    VoidFunc1<RendererParam> onCellDoubleClicked,
+    VoidFunc1<RendererParam> onCellContextMenu,
+    VoidFunc1<RendererParam> onCellValueChanged,
+    VoidFunc1<RendererParam> onCellFocused,
+    VoidFunc1<RendererParam> onRowClicked,
+    VoidFunc1<RendererParam> onRowDoubleClicked,
+    VoidFunc1<RendererParam> onRowSelected,
+    VoidFunc1<RendererParam> onRowDeselected,
+    VoidFunc1<RendererParam> onGridReady,
+    VoidFunc1<RendererParam> onVirtualRowRemoved,
+    VoidFunc1<RendererParam> onGridSizeChanged,
+    VoidFunc0 onModelUpdated,
+    VoidFunc0 onSelectionChanged,
+    VoidFunc0 onBeforeFilterChanged,
+    VoidFunc0 onAfterFilterChanged,
+    VoidFunc0 onFilterModified,
+    VoidFunc0 onBeforeSortChanged,
+    VoidFunc0 onAfterSortChanged});
 }
 
 @JS()

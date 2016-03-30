@@ -54,6 +54,7 @@ class GridApi {
   external void selectNode(node, bool tryMulti, bool suppressEvents);
   external void forEachNodeAfterFilter(Function callback);
   external void destroy();
+  external GridCell getFocusedCell();
 
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;
@@ -106,3 +107,34 @@ class GridApi {
 
  */
 }
+
+
+@JS()
+class GridCell {
+  external int get rowIndex;
+  external String get floating;
+}
+
+
+@JS()
+class RowModel{
+  external List<RowNode> getTopLevelNodes();
+  external RowNode getRow(int index);
+  external int getRowCount();
+  external int getRowAtPixel(int pixel);
+  external num getRowCombinedHeight();
+  external bool isRowsToRender();
+  external bool  isEmpty();
+  external void expandOrCollapseAll(bool expand);
+/*
+export interface IRowModel {
+refreshModel(step: number, fromIndex?: number): void;
+forEachNode(callback: (rowNode: RowNode) => void): void;
+forEachNodeAfterFilter(callback: (rowNode: RowNode) => void): void;
+forEachNodeAfterFilterAndSort(callback: (rowNode: RowNode) => void): void;
+expandOrCollapseAll(expand: boolean): void;
+setRowData(rows: any[], refresh: boolean, firstId?: number): void;
+setDatasource(datasource: any): void;
+*/
+}
+

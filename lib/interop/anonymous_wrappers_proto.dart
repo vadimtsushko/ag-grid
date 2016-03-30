@@ -227,7 +227,29 @@ class GridOptions {
   bool suppressMenuMainPanel;
   bool suppressMenuColumnPanel;
   Function getNodeChildDetails;
+
+  VoidFunc1<RendererParam> onCellClicked;
+  VoidFunc1<RendererParam> onCellDoubleClicked;
+  VoidFunc1<RendererParam> onCellContextMenu;
+  VoidFunc1<RendererParam> onCellValueChanged;
+  VoidFunc1<RendererParam> onCellFocused;
   VoidFunc1<RendererParam> onRowClicked;
+  VoidFunc1<RendererParam> onRowDoubleClicked;
+  VoidFunc1<RendererParam> onRowSelected;
+  VoidFunc1<RendererParam> onRowDeselected;
+  VoidFunc1<RendererParam> onGridReady;
+  VoidFunc1<RendererParam> onVirtualRowRemoved;
+
+  VoidFunc1<RendererParam> onGridSizeChanged;
+
+  VoidFunc0 onModelUpdated;
+  VoidFunc0 onSelectionChanged;
+  VoidFunc0 onBeforeFilterChanged;
+  VoidFunc0 onAfterFilterChanged;
+  VoidFunc0 onFilterModified;
+  VoidFunc0 onBeforeSortChanged;
+  VoidFunc0 onAfterSortChanged;
+
 }
 
 class getNodeChildDetailsResult {
