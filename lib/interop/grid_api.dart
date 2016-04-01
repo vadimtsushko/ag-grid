@@ -43,6 +43,7 @@ class GridApi {
   external void recomputeAggregates();
   external void sizeColumnsToFit();
   external void showLoadingOverlay();
+  external void showNoRowsOverlay();
   external void hideOverlay();
   external void showLoading(show);
   external bool isNodeSelected(node);

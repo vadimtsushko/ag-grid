@@ -195,6 +195,8 @@ class GridOptions {
   external set suppressMenuColumnPanel(bool value);
   external Function get getNodeChildDetails;
   external set getNodeChildDetails(Function value);
+  external String get rowModelType;
+  external set rowModelType(String value);
   external VoidFunc1<RendererParam> get onCellClicked;
   external set onCellClicked(VoidFunc1<RendererParam> value);
   external VoidFunc1<RendererParam> get onCellDoubleClicked;
@@ -262,6 +264,7 @@ class GridOptions {
     bool suppressMenuMainPanel,
     bool suppressMenuColumnPanel,
     Function getNodeChildDetails,
+    String rowModelType,
     VoidFunc1<RendererParam> onCellClicked,
     VoidFunc1<RendererParam> onCellDoubleClicked,
     VoidFunc1<RendererParam> onCellContextMenu,
@@ -413,6 +416,8 @@ class LocaleText {
   external set valueColumns(String value);
   external String get valueColumnsEmptyMessage;
   external set valueColumnsEmptyMessage(String value);
+  external String get noRowsToShow;
+  external set noRowsToShow(String value);
   external factory LocaleText ({
     String page,
     String more,
@@ -439,7 +444,8 @@ class LocaleText {
     String groupColumns,
     String groupColumnsEmptyMessage,
     String valueColumns,
-    String valueColumnsEmptyMessage});
+    String valueColumnsEmptyMessage,
+    String noRowsToShow});
 }
 
 @JS()

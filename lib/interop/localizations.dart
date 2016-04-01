@@ -86,6 +86,7 @@ LocaleText russianLocale() => new LocaleText(
     group: 'Группа',
 // tool panel
     columns: 'Колонки',
+    noRowsToShow: 'Нет строк для отображения',
     groupColumns: 'Колонки группы',
     groupColumnsEmptyMessage: 'Перетащите колонки сюда',
     valueColumns: 'Колонки значений',

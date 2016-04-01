@@ -33,6 +33,7 @@ class LocaleText {
   String groupColumnsEmptyMessage;
   String valueColumns;
   String valueColumnsEmptyMessage;
+  String noRowsToShow;
 }
 
 class RowNode {
@@ -227,7 +228,7 @@ class GridOptions {
   bool suppressMenuMainPanel;
   bool suppressMenuColumnPanel;
   Function getNodeChildDetails;
-
+  String rowModelType;
   VoidFunc1<RendererParam> onCellClicked;
   VoidFunc1<RendererParam> onCellDoubleClicked;
   VoidFunc1<RendererParam> onCellContextMenu;
