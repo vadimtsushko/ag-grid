@@ -250,7 +250,8 @@ class GridOptions {
   VoidFunc0 onFilterModified;
   VoidFunc0 onBeforeSortChanged;
   VoidFunc0 onAfterSortChanged;
-
+  Func0<bool> isExternalFilterPresent;
+  Func1<RowNode, bool> doesExternalFilterPass;
 }
 
 class getNodeChildDetailsResult {

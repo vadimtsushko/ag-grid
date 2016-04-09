@@ -56,6 +56,7 @@ class GridApi {
   external void forEachNodeAfterFilter(Function callback);
   external void destroy();
   external GridCell getFocusedCell();
+  external void onFilterChanged();
 
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;

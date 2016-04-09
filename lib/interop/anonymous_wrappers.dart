@@ -235,6 +235,10 @@ class GridOptions {
   external set onBeforeSortChanged(VoidFunc0 value);
   external VoidFunc0 get onAfterSortChanged;
   external set onAfterSortChanged(VoidFunc0 value);
+  external Func0<bool> get isExternalFilterPresent;
+  external set isExternalFilterPresent(Func0<bool> value);
+  external Func1<RowNode, bool> get doesExternalFilterPass;
+  external set doesExternalFilterPass(Func1<RowNode, bool> value);
   external factory GridOptions ({
     GridApi api,
     List<ColumnDef> columnDefs,
@@ -283,7 +287,9 @@ class GridOptions {
     VoidFunc0 onAfterFilterChanged,
     VoidFunc0 onFilterModified,
     VoidFunc0 onBeforeSortChanged,
-    VoidFunc0 onAfterSortChanged});
+    VoidFunc0 onAfterSortChanged,
+    Func0<bool> isExternalFilterPresent,
+    Func1<RowNode, bool> doesExternalFilterPass});
 }
 
 @JS()
