@@ -3,6 +3,30 @@
 part of agGrid;
 @JS()
 @anonymous
+class MenuItem {
+  external String get name;
+  external set name(String value);
+  external bool get disabled;
+  external set disabled(bool value);
+  external String get shortcut;
+  external set shortcut(String value);
+  external VoidFunc0 get action;
+  external set action(VoidFunc0 value);
+  external bool get checked;
+  external set checked(bool value);
+  external dynamic get icon;
+  external set icon(dynamic value);
+  external factory MenuItem ({
+    String name,
+    bool disabled,
+    String shortcut,
+    VoidFunc0 action,
+    bool checked,
+    dynamic icon});
+}
+
+@JS()
+@anonymous
 class GetRowsParam {
   external int get startRow;
   external set startRow(int value);
@@ -195,6 +219,8 @@ class GridOptions {
   external set suppressMenuColumnPanel(bool value);
   external Function get getNodeChildDetails;
   external set getNodeChildDetails(Function value);
+  external Function get getContextMenuItems;
+  external set getContextMenuItems(Function value);
   external String get rowModelType;
   external set rowModelType(String value);
   external VoidFunc1<RendererParam> get onCellClicked;
@@ -268,6 +294,7 @@ class GridOptions {
     bool suppressMenuMainPanel,
     bool suppressMenuColumnPanel,
     Function getNodeChildDetails,
+    Function getContextMenuItems,
     String rowModelType,
     VoidFunc1<RendererParam> onCellClicked,
     VoidFunc1<RendererParam> onCellDoubleClicked,
@@ -290,81 +317,6 @@ class GridOptions {
     VoidFunc0 onAfterSortChanged,
     Func0<bool> isExternalFilterPresent,
     Func1<RowNode, bool> doesExternalFilterPass});
-}
-
-@JS()
-@anonymous
-class RowNode {
-  external int get id;
-  external set id(int value);
-  external dynamic get data;
-  external set data(dynamic value);
-  external RowNode get parent;
-  external set parent(RowNode value);
-  external int get level;
-  external set level(int value);
-  external bool get group;
-  external set group(bool value);
-  external bool get firstChild;
-  external set firstChild(bool value);
-  external bool get lastChild;
-  external set lastChild(bool value);
-  external int get childIndex;
-  external set childIndex(int value);
-  external bool get floating;
-  external set floating(bool value);
-  external bool get floatingTop;
-  external set floatingTop(bool value);
-  external bool get floatingBottom;
-  external set floatingBottom(bool value);
-  external String get quickFilterAggregateText;
-  external set quickFilterAggregateText(String value);
-  external bool get footer;
-  external set footer(bool value);
-  external List<RowNode> get children;
-  external set children(List<RowNode> value);
-  external String get field;
-  external set field(String value);
-  external dynamic get key;
-  external set key(dynamic value);
-  external List<RowNode> get childrenAfterFilter;
-  external set childrenAfterFilter(List<RowNode> value);
-  external List<RowNode> get childrenAfterSort;
-  external set childrenAfterSort(List<RowNode> value);
-  external int get allChildrenCount;
-  external set allChildrenCount(int value);
-  external bool get expanded;
-  external set expanded(bool value);
-  external RowNode get sibling;
-  external set sibling(RowNode value);
-  external num get rowHeight;
-  external set rowHeight(num value);
-  external num get rowTop;
-  external set rowTop(num value);
-  external factory RowNode ({
-    int id,
-    dynamic data,
-    RowNode parent,
-    int level,
-    bool group,
-    bool firstChild,
-    bool lastChild,
-    int childIndex,
-    bool floating,
-    bool floatingTop,
-    bool floatingBottom,
-    String quickFilterAggregateText,
-    bool footer,
-    List<RowNode> children,
-    String field,
-    dynamic key,
-    List<RowNode> childrenAfterFilter,
-    List<RowNode> childrenAfterSort,
-    int allChildrenCount,
-    bool expanded,
-    RowNode sibling,
-    num rowHeight,
-    num rowTop});
 }
 
 @JS()

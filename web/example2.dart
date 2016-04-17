@@ -56,5 +56,5 @@ void main() {
       suppressCellSelection: true,
       localeText: russianLocale(),
       enableColResize: true);
-  Grid grid = new Grid(gridDiv, go);
+  new Grid(gridDiv, go);
 }

@@ -28,5 +28,5 @@ void main() {
       enableFilter: true,
       enableSorting: true,
       enableColResize: true);
-  Grid grid = new Grid(gridDiv, go);
+  new Grid(gridDiv, go);
 }

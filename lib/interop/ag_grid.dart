@@ -3,10 +3,13 @@ library agGrid;
 
 import "package:func/func.dart";
 import "package:js/js.dart";
+import 'rownode.dart';
+
+export 'rownode.dart';
+
 part 'localizations.dart';
 part 'anonymous_wrappers.dart';
 part 'grid_api.dart';
-
 
 
 @JS()

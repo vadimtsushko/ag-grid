@@ -1,5 +1,4 @@
 library js_object_api;
-import "package:func/func.dart";
 import "package:js/js.dart";
 
 @JS()

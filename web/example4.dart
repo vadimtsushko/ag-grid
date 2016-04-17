@@ -84,7 +84,7 @@ main() async {
       rowDeselection: true,
       suppressCellSelection: true,
       enableColResize: true);
-  Grid grid = new Grid(gridDiv, gridOptions);
+  new Grid(gridDiv, gridOptions);
   var path = 'olympicWinners.json';
   allOfTheData = JSON.decode(await HttpRequest.getString(path));
   var rowData = new JsObject.jsify(allOfTheData);

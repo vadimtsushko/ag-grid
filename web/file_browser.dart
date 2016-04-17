@@ -4,7 +4,6 @@
 import 'dart:html' as dom;
 import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
-import 'package:ag_grid/js_object_api.dart' as js_object_api;
 
 GridApi api;
 innerCellRenderer(RendererParam params) {

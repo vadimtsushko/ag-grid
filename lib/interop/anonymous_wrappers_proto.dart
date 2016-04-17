@@ -5,6 +5,8 @@ import "package:func/func.dart";
 
 @stub
 class GridApi {}
+@stub
+class RowNode {}
 
 class LocaleText {
   String page;
@@ -36,53 +38,6 @@ class LocaleText {
   String noRowsToShow;
 }
 
-class RowNode {
-  int id;
-
-  var data;
-
-  RowNode parent;
-  /** How many levels this node is from the top */
-  int level;
-  /** True if this node is a group node (ie has children) */
-  bool group;
-  /** True if this is the first child in this group */
-  bool firstChild;
-  /** True if this is the last child in this group */
-  bool lastChild;
-  /** The index of this node in the group */
-  int childIndex;
-  /** True if this row is a floating row */
-  bool floating;
-  /** True if this row is a floating top row */
-  bool floatingTop;
-  /** True if this row is a floating bottom row */
-  bool floatingBottom;
-  /** If using quick filter, stores a string representation of the row for searching against */
-  String quickFilterAggregateText;
-  /** Groups only - True if row is a footer. Footers  have group = true and footer = true */
-  bool footer;
-  /** Groups only - Children of this group */
-  List<RowNode> children;
-  /** Groups only - The field we are grouping on eg Country*/
-  String field;
-  /** Groups only - The key for the group eg Ireland, UK, USA */
-  var key;
-  /** Groups only - Filtered children of this group */
-  List<RowNode> childrenAfterFilter;
-  /** Groups only - Sorted children of this group */
-  List<RowNode> childrenAfterSort;
-  /** Groups only - Number of children and grand children */
-  int allChildrenCount;
-  /** Groups only - True if group is expanded, otherwise false */
-  bool expanded;
-  /** Groups only - If doing footers, reference to the footer node for this group */
-  RowNode sibling;
-  /** The height, in pixels, of this row */
-  num rowHeight;
-  /** The top pixel for this row */
-  num rowTop;
-}
 
 class BaseParam {
   ColumnDef colDef;
@@ -228,6 +183,7 @@ class GridOptions {
   bool suppressMenuMainPanel;
   bool suppressMenuColumnPanel;
   Function getNodeChildDetails;
+  Function getContextMenuItems;
   String rowModelType;
   VoidFunc1<RendererParam> onCellClicked;
   VoidFunc1<RendererParam> onCellDoubleClicked;
@@ -296,6 +252,19 @@ class FileBrowserItem {
   String dateModified;
   List<FileBrowserItem> children;
 }
+
+
+class MenuItem {
+  String name;
+  bool disabled;
+  String shortcut;
+  VoidFunc0 action;
+  /// set to true to provide a check beside the option
+  bool checked;
+  /// the icon to display beside the icon, either a DOM element or HTML string
+  var icon;
+}
+
 
 main() {
   new WrapperGenerator(#anonymous_wrappers_proto, fileHeader: 'part of agGrid;')

@@ -6,7 +6,6 @@ import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 import 'dart:convert';
 import "package:js/js.dart";
-import 'package:ag_grid/interop/object_api.dart' as obj;
 
 rowNumCellRendererFunc(RendererParam params) {
 //  var map = obj.toMap(params);
@@ -50,7 +49,7 @@ main() async {
       rowDeselection: true,
       suppressCellSelection: true,
       enableColResize: true);
-  Grid grid = new Grid(gridDiv, gridOptions);
+  new Grid(gridDiv, gridOptions);
   var path = 'olympicWinners.json';
   var allOfTheData = JSON.decode(await HttpRequest.getString(path));
   var rowData = new JsObject.jsify(allOfTheData);

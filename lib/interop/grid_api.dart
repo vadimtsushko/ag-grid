@@ -54,9 +54,14 @@ class GridApi {
   external void ensureColumnVisible(key);
   external void selectNode(node, bool tryMulti, bool suppressEvents);
   external void forEachNodeAfterFilter(Function callback);
+  external void forEachInMemory(Function callback);
+  external void forEachNode(Function callback);
+  external void forEachNodeAfterFilterAndSort(Function callback);
   external void destroy();
   external GridCell getFocusedCell();
   external void onFilterChanged();
+  external void copySelectedRowsToClipboard();
+  external void copySelectedRangeToClipboard();
 
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;
