@@ -23,10 +23,13 @@ headerCellRendererFunc(RendererParam params) {
   });
   return cb;
 }
-
+GridOptions gridOptions;
+var startDateColDef;
 void main() {
+  HtmlElement button = querySelector('#setDate');
+  button.onClick.listen((_) => setDate());
   initialiseAgGridWithWebComponents();
-  var startDateColDef = new ColumnDef(headerName: 'Start date',
+  startDateColDef = new ColumnDef(headerName: 'Start date',
       field: 'startDate',
       cellRenderer: allowInterop(dateCellRenderer),
       editable: false);
@@ -66,7 +69,7 @@ startDateColDef,
     {'make': "Porsche", 'model': "Boxter", 'price': 72000, 'topSeller': '', 'startDate': new DateTime(2014,1,16)}
   ]);
 
-  GridOptions go = new GridOptions(
+  gridOptions = new GridOptions(
       columnDefs: columnDefs,
       rowData: rowData,
       enableFilter: true,
@@ -77,7 +80,7 @@ startDateColDef,
       suppressCellSelection: false,
       localeText: russianLocale(),
       enableColResize: true);
-  new Grid(gridDiv, go);
+  new Grid(gridDiv, gridOptions);
 }
 
 String booleanFilterCellRenderer(RendererParam params) {
@@ -116,3 +119,10 @@ String toRussianDate(DateTime date) {
 }
 
 dateCellRenderer(RendererParam params) => toRussianDate(params.value);
+
+
+setDate() {
+  FilterApi filterApi =  gridOptions.api.getFilterApi(startDateColDef);
+  filterApi.setFilter(new DateTime(2012,12,31));
+  gridOptions.api.onFilterChanged();
+}

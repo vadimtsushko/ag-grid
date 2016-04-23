@@ -68,7 +68,6 @@ class GridApi {
   external List<RowNode> getSelectedNodes();
   external List getSelectedRows();
   external FilterApi getFilterApi(key);
-  external FilterApi getFilterApiForColumnDef(ColumnDef colDef);
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;
     deselectNode(node: any, suppressEvents?: boolean): void;
@@ -158,4 +157,8 @@ class FilterApi {
   external int getType();
   external getModel();
   external setModel(model);
+
+
+  external selectEverything();
+  external selectValue(value);
 }
