@@ -4,8 +4,11 @@ library agGrid;
 import "package:func/func.dart";
 import "package:js/js.dart";
 import 'rownode.dart';
+import 'column.dart';
 
 export 'rownode.dart';
+export 'column.dart';
+export 'custom_filter.dart';
 
 part 'localizations.dart';
 part 'anonymous_wrappers.dart';
@@ -19,6 +22,7 @@ external initialiseAgGridWithWebComponents();
 class Grid {
   external Grid(div, GridOptions gridOptions);
 }
+
 
 
 

@@ -7,6 +7,8 @@ import "package:func/func.dart";
 class GridApi {}
 @stub
 class RowNode {}
+@stub
+class Column {}
 
 class LocaleText {
   String page;
@@ -201,7 +203,7 @@ class GridOptions {
 
   VoidFunc0 onModelUpdated;
   VoidFunc0 onSelectionChanged;
-  VoidFunc0 onBeforeFilterChanged;
+  VoidFunc1 onBeforeFilterChanged;
   VoidFunc0 onAfterFilterChanged;
   VoidFunc0 onFilterModified;
   VoidFunc0 onBeforeSortChanged;
@@ -264,6 +266,16 @@ class MenuItem {
   /// the icon to display beside the icon, either a DOM element or HTML string
   var icon;
 }
+
+class GetContextMenuItemsParams  {
+  Column column;
+  GridApi api;
+  RowNode node;
+  var value;
+  var context;
+  var columnApi;
+}
+
 
 
 main() {

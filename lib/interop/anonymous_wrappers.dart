@@ -251,8 +251,8 @@ class GridOptions {
   external set onModelUpdated(VoidFunc0 value);
   external VoidFunc0 get onSelectionChanged;
   external set onSelectionChanged(VoidFunc0 value);
-  external VoidFunc0 get onBeforeFilterChanged;
-  external set onBeforeFilterChanged(VoidFunc0 value);
+  external VoidFunc1 get onBeforeFilterChanged;
+  external set onBeforeFilterChanged(VoidFunc1 value);
   external VoidFunc0 get onAfterFilterChanged;
   external set onAfterFilterChanged(VoidFunc0 value);
   external VoidFunc0 get onFilterModified;
@@ -310,7 +310,7 @@ class GridOptions {
     VoidFunc1<RendererParam> onGridSizeChanged,
     VoidFunc0 onModelUpdated,
     VoidFunc0 onSelectionChanged,
-    VoidFunc0 onBeforeFilterChanged,
+    VoidFunc1 onBeforeFilterChanged,
     VoidFunc0 onAfterFilterChanged,
     VoidFunc0 onFilterModified,
     VoidFunc0 onBeforeSortChanged,
@@ -644,6 +644,30 @@ class ColumnDef {
     FilterParams filterParams,
     Func1<RendererParam, String> headerValueGetter,
     bool volatile});
+}
+
+@JS()
+@anonymous
+class GetContextMenuItemsParams {
+  external Column get column;
+  external set column(Column value);
+  external GridApi get api;
+  external set api(GridApi value);
+  external RowNode get node;
+  external set node(RowNode value);
+  external dynamic get value;
+  external set value(dynamic value);
+  external dynamic get context;
+  external set context(dynamic value);
+  external dynamic get columnApi;
+  external set columnApi(dynamic value);
+  external factory GetContextMenuItemsParams ({
+    Column column,
+    GridApi api,
+    RowNode node,
+    dynamic value,
+    dynamic context,
+    dynamic columnApi});
 }
 
 @JS()

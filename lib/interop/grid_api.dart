@@ -60,17 +60,21 @@ class GridApi {
   external void destroy();
   external GridCell getFocusedCell();
   external void onFilterChanged();
+  external void onBeforeFilterChanged();
+  external void onAfterFilterChanged();
+  external void onFilterModified();
   external void copySelectedRowsToClipboard();
   external void copySelectedRangeToClipboard();
-
+  external List<RowNode> getSelectedNodes();
+  external List getSelectedRows();
+  external FilterApi getFilterApi(key);
+  external FilterApi getFilterApiForColumnDef(ColumnDef colDef);
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;
     deselectNode(node: any, suppressEvents?: boolean): void;
     getSelectedNodesById(): {
         [nodeId: number]: RowNode;
     };
-    getSelectedNodes(): RowNode[];
-    getSelectedRows(): any[];
     getBestCostNodeSelection(): any;
     getRenderedNodes(): any[];
     ensureColIndexVisible(index: any): void;
@@ -145,3 +149,13 @@ setDatasource(datasource: any): void;
 */
 }
 
+
+@JS()
+class FilterApi {
+  external setFilter(value);
+  external getFilter();
+  external setType(int type);
+  external int getType();
+  external getModel();
+  external setModel(model);
+}
