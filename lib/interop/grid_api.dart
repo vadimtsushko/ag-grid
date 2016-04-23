@@ -161,4 +161,5 @@ class FilterApi {
 
   external selectEverything();
   external selectValue(value);
+  external selectNothing();
 }
