@@ -203,6 +203,10 @@ class GridOptions {
   external set enableFilter(bool value);
   external bool get rowDeselection;
   external set rowDeselection(bool value);
+  external bool get singleClickEdit;
+  external set singleClickEdit(bool value);
+  external int get headerHeight;
+  external set headerHeight(int value);
   external String get rowSelection;
   external set rowSelection(String value);
   external LocaleText get localeText;
@@ -286,6 +290,8 @@ class GridOptions {
     bool enableServerSideSorting,
     bool enableFilter,
     bool rowDeselection,
+    bool singleClickEdit,
+    int headerHeight,
     String rowSelection,
     LocaleText localeText,
     bool enableServerSideFilter,
@@ -348,6 +354,12 @@ class LocaleText {
   external set blanks(String value);
   external String get equals;
   external set equals(String value);
+  external String get notEqual;
+  external set notEqual(String value);
+  external String get greaterThanOrEqual;
+  external set greaterThanOrEqual(String value);
+  external String get lessThanOrEqual;
+  external set lessThanOrEqual(String value);
   external String get lessThan;
   external set lessThan(String value);
   external String get greaterThan;
@@ -390,6 +402,9 @@ class LocaleText {
     String searchOoo,
     String blanks,
     String equals,
+    String notEqual,
+    String greaterThanOrEqual,
+    String lessThanOrEqual,
     String lessThan,
     String greaterThan,
     String applyFilter,
@@ -554,6 +569,8 @@ class ColumnDef {
   external set valueGetter(String value);
   external Function get headerCellRenderer;
   external set headerCellRenderer(Function value);
+  external GroupCellRenderer get cellRendererParams;
+  external set cellRendererParams(GroupCellRenderer value);
   external Func1<RendererParam, String> get headerCellTemplate;
   external set headerCellTemplate(Func1<RendererParam, String> value);
   external int get width;
@@ -619,6 +636,7 @@ class ColumnDef {
     String headerTooltip,
     String valueGetter,
     Function headerCellRenderer,
+    GroupCellRenderer cellRendererParams,
     Func1<RendererParam, String> headerCellTemplate,
     int width,
     int maxWidth,

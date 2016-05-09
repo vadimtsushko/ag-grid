@@ -56,8 +56,9 @@ void main() {
         headerName: "Name",
         field: "name",
         width: 250,
-        cellRenderer: new GroupCellRenderer(
-            renderer: 'group', innerRenderer: allowInterop(innerCellRenderer))),
+        cellRenderer: 'group',
+        cellRendererParams: new GroupCellRenderer(
+            innerRenderer: allowInterop(innerCellRenderer))),
     new ColumnDef(
         headerName: "Size",
         field: "size",

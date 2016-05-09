@@ -24,6 +24,9 @@ class LocaleText {
   String searchOoo;
   String blanks;
   String equals;
+  String notEqual;
+  String greaterThanOrEqual;
+  String lessThanOrEqual;
   String lessThan;
   String greaterThan;
   String applyFilter;
@@ -71,6 +74,7 @@ class ColumnDef {
   String headerTooltip;
   String valueGetter;
   Function headerCellRenderer;
+  GroupCellRenderer cellRendererParams;
   Func1<RendererParam, String> headerCellTemplate;
   int width;
   int maxWidth;
@@ -177,6 +181,8 @@ class GridOptions {
   bool enableServerSideSorting;
   bool enableFilter;
   bool rowDeselection;
+  bool singleClickEdit;
+  int headerHeight;
   String rowSelection;
   LocaleText localeText;
   bool enableServerSideFilter;

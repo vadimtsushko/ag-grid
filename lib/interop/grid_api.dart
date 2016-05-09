@@ -68,6 +68,9 @@ class GridApi {
   external List<RowNode> getSelectedNodes();
   external List getSelectedRows();
   external FilterApi getFilterApi(key);
+  external void setFilterModel(model);
+  external getFilterModel();
+
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;
     deselectNode(node: any, suppressEvents?: boolean): void;

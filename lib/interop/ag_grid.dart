@@ -28,12 +28,16 @@ class Grid {
 
 class NumberFilterType {
   static const EQUALS = 1;
-  static const LESS_THAN = 2;
-  static const GREATER_THAN = 3;
+  static const NOT_EQUAL = 2;
+  static const LESS_THAN = 3;
+  static const LESS_THAN_OR_EQUAL = 4;
+  static const GREATER_THAN = 5;
+  static const GREATER_THAN_OR_EQUAL = 6;
 }
 class TextFilterType {
   static const CONTAINS = 1;
   static const EQUALS = 2;
-  static const STARTS_WITH = 3;
-  static const ENDS_WITH = 4;
+  static const NOT_EQUALS = 3;
+  static const STARTS_WITH = 4;
+  static const ENDS_WITH = 5;
 }

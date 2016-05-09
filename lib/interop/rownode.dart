@@ -1,3 +1,5 @@
+@JS()
+library rownode;
 import "package:js/js.dart";
 
 @JS()

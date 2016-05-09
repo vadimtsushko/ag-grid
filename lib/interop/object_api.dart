@@ -1,3 +1,4 @@
+@JS()
 library js_object_api;
 import "package:js/js.dart";
 

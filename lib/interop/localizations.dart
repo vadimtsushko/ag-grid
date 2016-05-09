@@ -58,6 +58,8 @@ part of agGrid;
 //}
 
 
+
+
 LocaleText russianLocale() => new LocaleText(
     page: 'Страница',
     more: 'Дальше',
@@ -75,6 +77,9 @@ LocaleText russianLocale() => new LocaleText(
 // for number filter
     equals: 'Равно',
     lessThan: 'Меньше чем',
+    notEqual: 'Не равно',
+    lessThanOrEqual: 'Меньше или равно',
+    greaterThanOrEqual: 'Больше или равно',
     greaterThan: 'Больше чем',
     applyFilter: 'Применить',
     filterOoo: 'Фильтр...',

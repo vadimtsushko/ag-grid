@@ -1,3 +1,5 @@
+@JS()
+library column;
 import "package:js/js.dart";
 import 'ag_grid.dart';
 
