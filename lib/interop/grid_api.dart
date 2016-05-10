@@ -22,6 +22,9 @@ class GridApi {
   external rowDataChanged(rows);
   external refreshView();
   external softRefreshView();
+  external refreshGroupRows();
+  external void refreshHeader();
+  external refreshGroup();
 
   external bool isAnyFilterPresent();
   external bool isAdvancedFilterPresent();

@@ -9,6 +9,8 @@ class GridApi {}
 class RowNode {}
 @stub
 class Column {}
+@stub
+class ColumnApi {}
 
 class LocaleText {
   String page;
@@ -69,7 +71,7 @@ class ColumnDef {
   int sortedAt;
   List<String> sortingOrder;
   bool hide;
-  bool editable;
+  var editable;
   bool pinned;
   String headerTooltip;
   String valueGetter;
@@ -162,6 +164,7 @@ class FilterParams {
 
 class GridOptions {
   GridApi api;
+  ColumnApi columnApi;
   List<ColumnDef> columnDefs;
   var rowData;
   bool virtualPaging;

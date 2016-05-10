@@ -165,6 +165,8 @@ class getNodeChildDetailsResult {
 class GridOptions {
   external GridApi get api;
   external set api(GridApi value);
+  external ColumnApi get columnApi;
+  external set columnApi(ColumnApi value);
   external List<ColumnDef> get columnDefs;
   external set columnDefs(List<ColumnDef> value);
   external dynamic get rowData;
@@ -271,6 +273,7 @@ class GridOptions {
   external set doesExternalFilterPass(Func1<RowNode, bool> value);
   external factory GridOptions ({
     GridApi api,
+    ColumnApi columnApi,
     List<ColumnDef> columnDefs,
     dynamic rowData,
     bool virtualPaging,
@@ -559,8 +562,8 @@ class ColumnDef {
   external set sortingOrder(List<String> value);
   external bool get hide;
   external set hide(bool value);
-  external bool get editable;
-  external set editable(bool value);
+  external dynamic get editable;
+  external set editable(dynamic value);
   external bool get pinned;
   external set pinned(bool value);
   external String get headerTooltip;
@@ -631,7 +634,7 @@ class ColumnDef {
     int sortedAt,
     List<String> sortingOrder,
     bool hide,
-    bool editable,
+    dynamic editable,
     bool pinned,
     String headerTooltip,
     String valueGetter,

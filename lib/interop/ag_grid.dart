@@ -13,7 +13,7 @@ export 'custom_filter.dart';
 part 'localizations.dart';
 part 'anonymous_wrappers.dart';
 part 'grid_api.dart';
-
+part 'column_api.dart';
 
 @JS()
 external initialiseAgGridWithWebComponents();
