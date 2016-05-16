@@ -24,7 +24,11 @@ class Grid {
 }
 
 
-
+class FilterType {
+  static const text = 'text';
+  static const number = 'number';
+  static const set = 'set';
+}
 
 class NumberFilterType {
   static const EQUALS = 1;
