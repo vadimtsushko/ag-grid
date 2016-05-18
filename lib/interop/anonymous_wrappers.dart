@@ -568,8 +568,8 @@ class ColumnDef {
   external set pinned(bool value);
   external String get headerTooltip;
   external set headerTooltip(String value);
-  external String get valueGetter;
-  external set valueGetter(String value);
+  external dynamic get valueGetter;
+  external set valueGetter(dynamic value);
   external Function get headerCellRenderer;
   external set headerCellRenderer(Function value);
   external GroupCellRenderer get cellRendererParams;
@@ -637,7 +637,7 @@ class ColumnDef {
     dynamic editable,
     bool pinned,
     String headerTooltip,
-    String valueGetter,
+    dynamic valueGetter,
     Function headerCellRenderer,
     GroupCellRenderer cellRendererParams,
     Func1<RendererParam, String> headerCellTemplate,

@@ -74,7 +74,7 @@ class ColumnDef {
   var editable;
   bool pinned;
   String headerTooltip;
-  String valueGetter;
+  var valueGetter;
   Function headerCellRenderer;
   GroupCellRenderer cellRendererParams;
   Func1<RendererParam, String> headerCellTemplate;
