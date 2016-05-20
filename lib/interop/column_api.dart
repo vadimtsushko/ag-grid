@@ -6,7 +6,7 @@ class ColumnApi {
   external bool setColumnState(List<ColumnDef> columnState);
   external List<ColumnDef> getColumnState();
   external void resetColumnState();
-
+  external setColumnWidth(key, int newWidth, [bool finished]);
 }
 /*
 export declare class ColumnApi {
