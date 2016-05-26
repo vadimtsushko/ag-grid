@@ -7,12 +7,10 @@ import 'checkbox.dart';
 
 export 'numeric.dart';
 
-//selectCellEditorFactory() => new SelectCellEditor();
 numericCellEditorFactory() => new NumericCellEditor();
 checkboxCellEditorFactory() => new CheckboxCellEditor();
 
 initEditors() {
-  createClass('NumericCellEditor', NumericCellEditorMethods.getPrototype());
-  //createClass('SelectCellEditor', SelectCellEditorMethods.getPrototype());
+  createClass('NumericCellEditor', new NumericCellEditorMethods().getPrototype());
   createClass('CheckboxCellEditor', new CheckboxCellEditorMethods().getPrototype());
 }
