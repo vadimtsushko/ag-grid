@@ -11,6 +11,9 @@ class RowNode {}
 class Column {}
 @stub
 class ColumnApi {}
+@stub
+class HtmlElement {}
+
 
 class LocaleText {
   String page;
@@ -99,7 +102,9 @@ class ColumnDef {
   bool suppressAutoSize;
   var checkboxSelection;
   Function comparator;
-  String filter;
+  var cellEditor;
+  var cellEditorParams;
+  var filter;
   FilterParams filterParams;
   Func1<RendererParam, String> headerValueGetter;
   bool volatile;
@@ -285,7 +290,27 @@ class GetContextMenuItemsParams  {
   var columnApi;
 }
 
-
+//class CellEditorPrototype {
+//// gets called once after the editor is created
+//VoidFunc1 init;
+//
+//// Gets called once after GUI is attached to DOM.
+//// Useful if you want to focus or highlight a component
+//// (this is not possible when the element is not attached)
+//  VoidFunc0 afterGuiAttached;
+//// Return the DOM element of your editor, this is what the grid puts into the DOM
+//  Func0<HtmlElement> getGui;
+//// Should return the final value to the grid, the result of the editing
+//  Func0 getValue;
+//
+//// Gets called once by grid after editing is finished
+//// if your editor needs to do any cleanup, do it here
+//  VoidFunc0 destroy;
+//
+//// Gets called once after initialised.
+//// If you return true, the editor will appear in a popup
+//  Func0<bool> isPopup;
+//}
 
 main() {
   new WrapperGenerator(#anonymous_wrappers_proto, fileHeader: 'part of agGrid;')

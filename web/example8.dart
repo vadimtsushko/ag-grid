@@ -5,7 +5,7 @@ import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
 import 'package:ag_grid/js_object_api.dart' as js_object_api;
 import "dart:js";
-
+import 'package:ag_grid/editors/editors.dart';
 import "package:js/js.dart";
 
 var cellStyleBoolean = new JsObject.jsify({'text-align': 'center'});
@@ -16,30 +16,26 @@ void main() {
   HtmlElement button = querySelector('#setDate');
   button.onClick.listen((_) => setDate());
   initialiseAgGridWithWebComponents();
-  startDateColDef = new ColumnDef(headerName: 'Start date',
-      field: 'startDate',
-      cellRenderer: allowInterop(dateCellRenderer),
-      editable: false);
-  assignDateFilter(startDateColDef);
+  initEditors();
+//  createClass('dartInterface', 'NumericCellEditor', NumericCellEditorMethods.getPrototype());
+  var priceColumn = new ColumnDef(headerName: 'Price', field: 'price', editable: true);
+  priceColumn.cellEditor = allowInterop(numericCellEditorFactory);
+  //assignNumericCellEditor(priceColumn);
   var gridDiv = querySelector('#myGrid');
   var columnDefs = [
-startDateColDef,
     new ColumnDef(headerName: 'Make', field: 'make', editable: true),
     new ColumnDef(headerName: 'Model', field: 'model', editable: true),
-    new ColumnDef(headerName: 'Price', field: 'price', editable: true),
-//    priceColumnDef,
+//    new ColumnDef(headerName: 'Price', field: 'price'),
+    priceColumn,
     new ColumnDef(
         headerName: 'Top seller',
         field: 'topSeller',
         editable: true,
         cellStyle: cellStyleBoolean,
         width: 60,
-        newValueHandler: allowInterop(boolNewValueHandler),
-        cellRenderer: allowInterop(booleanCellRenderer),
-        filter: 'set',
-        filterParams: new FilterParams(
-            cellRenderer: allowInterop(booleanFilterCellRenderer),
-            values: ['1','0']))
+        cellEditor: allowInterop(checkboxCellEditorFactory),
+        cellRenderer: allowInterop(booleanCellRenderer)
+    )
   ];
 
   var rowData = new JsObject.jsify([
@@ -107,3 +103,6 @@ setDate() {
   filterApi.setFilter(new DateTime(2012,12,31));
   gridOptions.api.onFilterChanged();
 }
+
+
+

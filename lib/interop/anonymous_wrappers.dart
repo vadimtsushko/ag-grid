@@ -3,30 +3,6 @@
 part of agGrid;
 @JS()
 @anonymous
-class MenuItem {
-  external String get name;
-  external set name(String value);
-  external bool get disabled;
-  external set disabled(bool value);
-  external String get shortcut;
-  external set shortcut(String value);
-  external VoidFunc0 get action;
-  external set action(VoidFunc0 value);
-  external bool get checked;
-  external set checked(bool value);
-  external dynamic get icon;
-  external set icon(dynamic value);
-  external factory MenuItem ({
-    String name,
-    bool disabled,
-    String shortcut,
-    VoidFunc0 action,
-    bool checked,
-    dynamic icon});
-}
-
-@JS()
-@anonymous
 class GetRowsParam {
   external int get startRow;
   external set startRow(int value);
@@ -330,6 +306,30 @@ class GridOptions {
 
 @JS()
 @anonymous
+class MenuItem {
+  external String get name;
+  external set name(String value);
+  external bool get disabled;
+  external set disabled(bool value);
+  external String get shortcut;
+  external set shortcut(String value);
+  external VoidFunc0 get action;
+  external set action(VoidFunc0 value);
+  external bool get checked;
+  external set checked(bool value);
+  external dynamic get icon;
+  external set icon(dynamic value);
+  external factory MenuItem ({
+    String name,
+    bool disabled,
+    String shortcut,
+    VoidFunc0 action,
+    bool checked,
+    dynamic icon});
+}
+
+@JS()
+@anonymous
 class LocaleText {
   external String get page;
   external set page(String value);
@@ -616,8 +616,12 @@ class ColumnDef {
   external set checkboxSelection(dynamic value);
   external Function get comparator;
   external set comparator(Function value);
-  external String get filter;
-  external set filter(String value);
+  external dynamic get cellEditor;
+  external set cellEditor(dynamic value);
+  external dynamic get cellEditorParams;
+  external set cellEditorParams(dynamic value);
+  external dynamic get filter;
+  external set filter(dynamic value);
   external FilterParams get filterParams;
   external set filterParams(FilterParams value);
   external Func1<RendererParam, String> get headerValueGetter;
@@ -661,7 +665,9 @@ class ColumnDef {
     bool suppressAutoSize,
     dynamic checkboxSelection,
     Function comparator,
-    String filter,
+    dynamic cellEditor,
+    dynamic cellEditorParams,
+    dynamic filter,
     FilterParams filterParams,
     Func1<RendererParam, String> headerValueGetter,
     bool volatile});
