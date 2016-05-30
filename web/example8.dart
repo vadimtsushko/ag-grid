@@ -5,8 +5,9 @@ import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
 import 'package:ag_grid/js_object_api.dart' as js_object_api;
 import "dart:js";
-import 'package:ag_grid/editors/editors.dart';
+import 'package:ag_grid/interop/dart_interface.dart';
 import "package:js/js.dart";
+import 'data.dart';
 
 var cellStyleBoolean = new JsObject.jsify({'text-align': 'center'});
 
@@ -16,10 +17,11 @@ void main() {
   HtmlElement button = querySelector('#setDate');
   button.onClick.listen((_) => setDate());
   initialiseAgGridWithWebComponents();
-  initEditors();
+  setupDartInterface();
 //  createClass('dartInterface', 'NumericCellEditor', NumericCellEditorMethods.getPrototype());
-  var priceColumn = new ColumnDef(headerName: 'Price', field: 'price', editable: true);
-  priceColumn.cellEditor = allowInterop(numericCellEditorFactory);
+  var priceColumn =
+      new ColumnDef(headerName: 'Price', field: 'price', editable: true);
+//  priceColumn.cellEditor = allowInterop(numericCellEditorFactory);
   //assignNumericCellEditor(priceColumn);
   var gridDiv = querySelector('#myGrid');
   var columnDefs = [
@@ -33,16 +35,30 @@ void main() {
         editable: true,
         cellStyle: cellStyleBoolean,
         width: 60,
-        cellEditor: allowInterop(checkboxCellEditorFactory),
-        cellRenderer: allowInterop(booleanCellRenderer)
-    )
+        cellEditor: allowInterop(getDartInterface().checkBoxEditorFactory),
+        cellRenderer: allowInterop(booleanCellRenderer))
   ];
 
-  var rowData = new JsObject.jsify([
-    {'make': "Toyota", 'model': "Celica", 'price': 35000, 'topSeller': '', 'startDate': new DateTime(2013,2,3).millisecondsSinceEpoch},
-    {'make': "Ford", 'model': "Mondeo", 'price': 32000, 'topSeller': '1', 'startDate': new DateTime(2012,12,31).millisecondsSinceEpoch},
-    {'make': "Porsche", 'model': "Boxter", 'price': 72000, 'topSeller': '', 'startDate': new DateTime(2014,1,16).millisecondsSinceEpoch}
-  ]);
+  var rowData = [
+    new CarItem(
+        make: "Toyota",
+        model: "Celica",
+        price: 35000,
+        topSeller: '',
+        startDate: new DateTime(2013, 2, 3).millisecondsSinceEpoch),
+    new CarItem(
+        make: "Ford",
+        model: "Mondeo",
+        price: 32000,
+        topSeller: '1',
+        startDate: new DateTime(2012, 12, 31).millisecondsSinceEpoch),
+    new CarItem(
+        make: "Porsche",
+        model: "Boxter",
+        price: 72000,
+        topSeller: '',
+        startDate: new DateTime(2014, 1, 16).millisecondsSinceEpoch)
+  ];
 
   gridOptions = new GridOptions(
       columnDefs: columnDefs,
@@ -97,12 +113,8 @@ String toRussianDate(int milliseconds) {
 
 dateCellRenderer(RendererParam params) => toRussianDate(params.value);
 
-
 setDate() {
-  FilterApi filterApi =  gridOptions.api.getFilterApi(startDateColDef);
-  filterApi.setFilter(new DateTime(2012,12,31));
+  FilterApi filterApi = gridOptions.api.getFilterApi(startDateColDef);
+  filterApi.setFilter(new DateTime(2012, 12, 31));
   gridOptions.api.onFilterChanged();
 }
-
-
-

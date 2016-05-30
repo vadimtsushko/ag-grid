@@ -7,6 +7,7 @@ import 'package:ag_grid/js_object_api.dart' as js_object_api;
 import "dart:js";
 
 import "package:js/js.dart";
+import 'data.dart';
 
 var cellStyleBoolean = new JsObject.jsify({'text-align': 'center'});
 
@@ -42,11 +43,26 @@ startDateColDef,
             values: ['1','0']))
   ];
 
-  var rowData = new JsObject.jsify([
-    {'make': "Toyota", 'model': "Celica", 'price': 35000, 'topSeller': '', 'startDate': new DateTime(2013,2,3).millisecondsSinceEpoch},
-    {'make': "Ford", 'model': "Mondeo", 'price': 32000, 'topSeller': '1', 'startDate': new DateTime(2012,12,31).millisecondsSinceEpoch},
-    {'make': "Porsche", 'model': "Boxter", 'price': 72000, 'topSeller': '', 'startDate': new DateTime(2014,1,16).millisecondsSinceEpoch}
-  ]);
+  var rowData = [
+    new CarItem(
+        make: "Toyota",
+        model: "Celica",
+        price: 35000,
+        topSeller: '',
+        startDate: new DateTime(2013, 2, 3).millisecondsSinceEpoch),
+    new CarItem(
+        make: "Ford",
+        model: "Mondeo",
+        price: 32000,
+        topSeller: '1',
+        startDate: new DateTime(2012, 12, 31).millisecondsSinceEpoch),
+    new CarItem(
+        make: "Porsche",
+        model: "Boxter",
+        price: 72000,
+        topSeller: '',
+        startDate: new DateTime(2014, 1, 16).millisecondsSinceEpoch)
+  ];
 
   gridOptions = new GridOptions(
       columnDefs: columnDefs,

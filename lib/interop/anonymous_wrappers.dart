@@ -3,6 +3,33 @@
 part of agGrid;
 @JS()
 @anonymous
+class RendererParam {
+  external ColumnDef get colDef;
+  external set colDef(ColumnDef value);
+  external GridApi get api;
+  external set api(GridApi value);
+  external RowNode get node;
+  external set node(RowNode value);
+  external dynamic get data;
+  external set data(dynamic value);
+  external dynamic get newValue;
+  external set newValue(dynamic value);
+  external dynamic get oldValue;
+  external set oldValue(dynamic value);
+  external dynamic get value;
+  external set value(dynamic value);
+  external factory RendererParam ({
+    ColumnDef colDef,
+    GridApi api,
+    RowNode node,
+    dynamic data,
+    dynamic newValue,
+    dynamic oldValue,
+    dynamic value});
+}
+
+@JS()
+@anonymous
 class GetRowsParam {
   external int get startRow;
   external set startRow(int value);
@@ -27,15 +54,220 @@ class GetRowsParam {
 
 @JS()
 @anonymous
-class BaseParam {
-  external ColumnDef get colDef;
-  external set colDef(ColumnDef value);
-  external GridApi get api;
-  external set api(GridApi value);
-  external factory BaseParam ({
-    ColumnDef colDef,
-    GridApi api});
+class LocaleText {
+  external String get page;
+  external set page(String value);
+  external String get more;
+  external set more(String value);
+  external String get to;
+  external set to(String value);
+  external String get of;
+  external set of(String value);
+  external String get next;
+  external set next(String value);
+  external String get last;
+  external set last(String value);
+  external String get first;
+  external set first(String value);
+  external String get previous;
+  external set previous(String value);
+  external String get loadingOoo;
+  external set loadingOoo(String value);
+  external String get selectAll;
+  external set selectAll(String value);
+  external String get searchOoo;
+  external set searchOoo(String value);
+  external String get blanks;
+  external set blanks(String value);
+  external String get equals;
+  external set equals(String value);
+  external String get notEqual;
+  external set notEqual(String value);
+  external String get greaterThanOrEqual;
+  external set greaterThanOrEqual(String value);
+  external String get lessThanOrEqual;
+  external set lessThanOrEqual(String value);
+  external String get lessThan;
+  external set lessThan(String value);
+  external String get greaterThan;
+  external set greaterThan(String value);
+  external String get applyFilter;
+  external set applyFilter(String value);
+  external String get filterOoo;
+  external set filterOoo(String value);
+  external String get contains;
+  external set contains(String value);
+  external String get startsWith;
+  external set startsWith(String value);
+  external String get endsWith;
+  external set endsWith(String value);
+  external String get group;
+  external set group(String value);
+  external String get columns;
+  external set columns(String value);
+  external String get groupColumns;
+  external set groupColumns(String value);
+  external String get groupColumnsEmptyMessage;
+  external set groupColumnsEmptyMessage(String value);
+  external String get valueColumns;
+  external set valueColumns(String value);
+  external String get valueColumnsEmptyMessage;
+  external set valueColumnsEmptyMessage(String value);
+  external String get noRowsToShow;
+  external set noRowsToShow(String value);
+  external factory LocaleText ({
+    String page,
+    String more,
+    String to,
+    String of,
+    String next,
+    String last,
+    String first,
+    String previous,
+    String loadingOoo,
+    String selectAll,
+    String searchOoo,
+    String blanks,
+    String equals,
+    String notEqual,
+    String greaterThanOrEqual,
+    String lessThanOrEqual,
+    String lessThan,
+    String greaterThan,
+    String applyFilter,
+    String filterOoo,
+    String contains,
+    String startsWith,
+    String endsWith,
+    String group,
+    String columns,
+    String groupColumns,
+    String groupColumnsEmptyMessage,
+    String valueColumns,
+    String valueColumnsEmptyMessage,
+    String noRowsToShow});
 }
+
+@JS()
+@anonymous
+class StringIcons {
+  external String get menu;
+  external set menu(String value);
+  external String get filter;
+  external set filter(String value);
+  external String get sortAscending;
+  external set sortAscending(String value);
+  external String get sortDescending;
+  external set sortDescending(String value);
+  external String get sortUnSort;
+  external set sortUnSort(String value);
+  external String get groupExpanded;
+  external set groupExpanded(String value);
+  external String get groupContracted;
+  external set groupContracted(String value);
+  external String get columnGroupOpened;
+  external set columnGroupOpened(String value);
+  external String get columnGroupClosed;
+  external set columnGroupClosed(String value);
+  external String get columnVisible;
+  external set columnVisible(String value);
+  external String get columnHidden;
+  external set columnHidden(String value);
+  external String get columnRemoveFromGroup;
+  external set columnRemoveFromGroup(String value);
+  external factory StringIcons ({
+    String menu,
+    String filter,
+    String sortAscending,
+    String sortDescending,
+    String sortUnSort,
+    String groupExpanded,
+    String groupContracted,
+    String columnGroupOpened,
+    String columnGroupClosed,
+    String columnVisible,
+    String columnHidden,
+    String columnRemoveFromGroup});
+}
+
+@JS()
+@anonymous
+class GroupCellRenderer {
+  external String get renderer;
+  external set renderer(String value);
+  external dynamic get keyMap;
+  external set keyMap(dynamic value);
+  external bool get suppressCount;
+  external set suppressCount(bool value);
+  external bool get checkbox;
+  external set checkbox(bool value);
+  external int get padding;
+  external set padding(int value);
+  external dynamic get innerRenderer;
+  external set innerRenderer(dynamic value);
+  external dynamic get footerValueGetter;
+  external set footerValueGetter(dynamic value);
+  external factory GroupCellRenderer ({
+    String renderer,
+    dynamic keyMap,
+    bool suppressCount,
+    bool checkbox,
+    int padding,
+    dynamic innerRenderer,
+    dynamic footerValueGetter});
+}
+
+@JS()
+@anonymous
+class FileBrowserItem {
+  external bool get folder;
+  external set folder(bool value);
+  external bool get open;
+  external set open(bool value);
+  external String get name;
+  external set name(String value);
+  external String get size;
+  external set size(String value);
+  external String get type;
+  external set type(String value);
+  external String get dateModified;
+  external set dateModified(String value);
+  external List<FileBrowserItem> get children;
+  external set children(List<FileBrowserItem> value);
+  external factory FileBrowserItem ({
+    bool folder,
+    bool open,
+    String name,
+    String size,
+    String type,
+    String dateModified,
+    List<FileBrowserItem> children});
+}
+
+@JS()
+@anonymous
+class MenuItem {
+  external String get name;
+  external set name(String value);
+  external bool get disabled;
+  external set disabled(bool value);
+  external String get shortcut;
+  external set shortcut(String value);
+  external VoidFunc0 get action;
+  external set action(VoidFunc0 value);
+  external bool get checked;
+  external set checked(bool value);
+  external dynamic get icon;
+  external set icon(dynamic value);
+  external factory MenuItem ({
+    String name,
+    bool disabled,
+    String shortcut,
+    VoidFunc0 action,
+    bool checked,
+    dynamic icon});
+}
+
 
 @JS()
 @anonymous
@@ -63,6 +295,18 @@ class Datasource {
 
 @JS()
 @anonymous
+class BaseParam {
+  external ColumnDef get colDef;
+  external set colDef(ColumnDef value);
+  external GridApi get api;
+  external set api(GridApi value);
+  external factory BaseParam ({
+    ColumnDef colDef,
+    GridApi api});
+}
+
+@JS()
+@anonymous
 class FilterParams {
   external Func1<RendererParam, String> get cellRenderer;
   external set cellRenderer(Func1<RendererParam, String> value);
@@ -83,6 +327,27 @@ class FilterParams {
     String newRowsAction,
     bool apply,
     bool suppressRemoveEntries});
+}
+
+@JS()
+@anonymous
+class getNodeChildDetailsResult {
+  external bool get group;
+  external set group(bool value);
+  external List get children;
+  external set children(List value);
+  external bool get expanded;
+  external set expanded(bool value);
+  external String get field;
+  external set field(String value);
+  external String get key;
+  external set key(String value);
+  external factory getNodeChildDetailsResult ({
+    bool group,
+    List children,
+    bool expanded,
+    String field,
+    String key});
 }
 
 @JS()
@@ -113,27 +378,6 @@ class CsvExportParams {
     String customHeader,
     String customFooter,
     String columnSeparator});
-}
-
-@JS()
-@anonymous
-class getNodeChildDetailsResult {
-  external bool get group;
-  external set group(bool value);
-  external List get children;
-  external set children(List value);
-  external bool get expanded;
-  external set expanded(bool value);
-  external String get field;
-  external set field(String value);
-  external String get key;
-  external set key(String value);
-  external factory getNodeChildDetailsResult ({
-    bool group,
-    List children,
-    bool expanded,
-    String field,
-    String key});
 }
 
 @JS()
@@ -306,126 +550,6 @@ class GridOptions {
 
 @JS()
 @anonymous
-class MenuItem {
-  external String get name;
-  external set name(String value);
-  external bool get disabled;
-  external set disabled(bool value);
-  external String get shortcut;
-  external set shortcut(String value);
-  external VoidFunc0 get action;
-  external set action(VoidFunc0 value);
-  external bool get checked;
-  external set checked(bool value);
-  external dynamic get icon;
-  external set icon(dynamic value);
-  external factory MenuItem ({
-    String name,
-    bool disabled,
-    String shortcut,
-    VoidFunc0 action,
-    bool checked,
-    dynamic icon});
-}
-
-@JS()
-@anonymous
-class LocaleText {
-  external String get page;
-  external set page(String value);
-  external String get more;
-  external set more(String value);
-  external String get to;
-  external set to(String value);
-  external String get of;
-  external set of(String value);
-  external String get next;
-  external set next(String value);
-  external String get last;
-  external set last(String value);
-  external String get first;
-  external set first(String value);
-  external String get previous;
-  external set previous(String value);
-  external String get loadingOoo;
-  external set loadingOoo(String value);
-  external String get selectAll;
-  external set selectAll(String value);
-  external String get searchOoo;
-  external set searchOoo(String value);
-  external String get blanks;
-  external set blanks(String value);
-  external String get equals;
-  external set equals(String value);
-  external String get notEqual;
-  external set notEqual(String value);
-  external String get greaterThanOrEqual;
-  external set greaterThanOrEqual(String value);
-  external String get lessThanOrEqual;
-  external set lessThanOrEqual(String value);
-  external String get lessThan;
-  external set lessThan(String value);
-  external String get greaterThan;
-  external set greaterThan(String value);
-  external String get applyFilter;
-  external set applyFilter(String value);
-  external String get filterOoo;
-  external set filterOoo(String value);
-  external String get contains;
-  external set contains(String value);
-  external String get startsWith;
-  external set startsWith(String value);
-  external String get endsWith;
-  external set endsWith(String value);
-  external String get group;
-  external set group(String value);
-  external String get columns;
-  external set columns(String value);
-  external String get groupColumns;
-  external set groupColumns(String value);
-  external String get groupColumnsEmptyMessage;
-  external set groupColumnsEmptyMessage(String value);
-  external String get valueColumns;
-  external set valueColumns(String value);
-  external String get valueColumnsEmptyMessage;
-  external set valueColumnsEmptyMessage(String value);
-  external String get noRowsToShow;
-  external set noRowsToShow(String value);
-  external factory LocaleText ({
-    String page,
-    String more,
-    String to,
-    String of,
-    String next,
-    String last,
-    String first,
-    String previous,
-    String loadingOoo,
-    String selectAll,
-    String searchOoo,
-    String blanks,
-    String equals,
-    String notEqual,
-    String greaterThanOrEqual,
-    String lessThanOrEqual,
-    String lessThan,
-    String greaterThan,
-    String applyFilter,
-    String filterOoo,
-    String contains,
-    String startsWith,
-    String endsWith,
-    String group,
-    String columns,
-    String groupColumns,
-    String groupColumnsEmptyMessage,
-    String valueColumns,
-    String valueColumnsEmptyMessage,
-    String noRowsToShow});
-}
-
-@JS()
-@anonymous
 class AbstractColDef {
   external String get headerName;
   external set headerName(String value);
@@ -449,75 +573,6 @@ class SortModelItem {
   external factory SortModelItem ({
     String colId,
     String sort});
-}
-
-@JS()
-@anonymous
-class StringIcons {
-  external String get menu;
-  external set menu(String value);
-  external String get filter;
-  external set filter(String value);
-  external String get sortAscending;
-  external set sortAscending(String value);
-  external String get sortDescending;
-  external set sortDescending(String value);
-  external String get sortUnSort;
-  external set sortUnSort(String value);
-  external String get groupExpanded;
-  external set groupExpanded(String value);
-  external String get groupContracted;
-  external set groupContracted(String value);
-  external String get columnGroupOpened;
-  external set columnGroupOpened(String value);
-  external String get columnGroupClosed;
-  external set columnGroupClosed(String value);
-  external String get columnVisible;
-  external set columnVisible(String value);
-  external String get columnHidden;
-  external set columnHidden(String value);
-  external String get columnRemoveFromGroup;
-  external set columnRemoveFromGroup(String value);
-  external factory StringIcons ({
-    String menu,
-    String filter,
-    String sortAscending,
-    String sortDescending,
-    String sortUnSort,
-    String groupExpanded,
-    String groupContracted,
-    String columnGroupOpened,
-    String columnGroupClosed,
-    String columnVisible,
-    String columnHidden,
-    String columnRemoveFromGroup});
-}
-
-@JS()
-@anonymous
-class GroupCellRenderer {
-  external String get renderer;
-  external set renderer(String value);
-  external dynamic get keyMap;
-  external set keyMap(dynamic value);
-  external bool get suppressCount;
-  external set suppressCount(bool value);
-  external bool get checkbox;
-  external set checkbox(bool value);
-  external int get padding;
-  external set padding(int value);
-  external dynamic get innerRenderer;
-  external set innerRenderer(dynamic value);
-  external dynamic get footerValueGetter;
-  external set footerValueGetter(dynamic value);
-  external factory GroupCellRenderer ({
-    String renderer,
-    dynamic keyMap,
-    bool suppressCount,
-    bool checkbox,
-    int padding,
-    dynamic innerRenderer,
-    dynamic footerValueGetter});
 }
 
 @JS()
@@ -695,59 +750,5 @@ class GetContextMenuItemsParams {
     dynamic value,
     dynamic context,
     dynamic columnApi});
-}
-
-@JS()
-@anonymous
-class FileBrowserItem {
-  external bool get folder;
-  external set folder(bool value);
-  external bool get open;
-  external set open(bool value);
-  external String get name;
-  external set name(String value);
-  external String get size;
-  external set size(String value);
-  external String get type;
-  external set type(String value);
-  external String get dateModified;
-  external set dateModified(String value);
-  external List<FileBrowserItem> get children;
-  external set children(List<FileBrowserItem> value);
-  external factory FileBrowserItem ({
-    bool folder,
-    bool open,
-    String name,
-    String size,
-    String type,
-    String dateModified,
-    List<FileBrowserItem> children});
-}
-
-@JS()
-@anonymous
-class RendererParam {
-  external ColumnDef get colDef;
-  external set colDef(ColumnDef value);
-  external GridApi get api;
-  external set api(GridApi value);
-  external RowNode get node;
-  external set node(RowNode value);
-  external dynamic get data;
-  external set data(dynamic value);
-  external dynamic get newValue;
-  external set newValue(dynamic value);
-  external dynamic get oldValue;
-  external set oldValue(dynamic value);
-  external dynamic get value;
-  external set value(dynamic value);
-  external factory RendererParam ({
-    ColumnDef colDef,
-    GridApi api,
-    RowNode node,
-    dynamic data,
-    dynamic newValue,
-    dynamic oldValue,
-    dynamic value});
 }
 

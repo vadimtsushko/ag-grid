@@ -37,9 +37,10 @@ abstract class CellEditorMethods {
   dynamic getValue(me);
   bool isPopup(me);
   destroy(me);
+  create();
 
   CellEditorPrototype getPrototype() {
-    var result = new CellEditorPrototype();
+    var result = create();
     result.init = allowInteropCaptureThis(init);
     result.getGui = allowInteropCaptureThis(getGui);
     result.afterGuiAttached = allowInteropCaptureThis(afterGuiAttached);

@@ -1,16 +1,24 @@
+//
+//import 'numeric.dart';
+//
+//import '../interop/dart_interface.dart';
+//import 'select.dart';
+//import 'checkbox.dart';
 
-import 'numeric.dart';
+//export 'numeric.dart';
 
-import '../interop/dart_interface.dart';
-import 'select.dart';
-import 'checkbox.dart';
+//numericCellEditorFactory() => new NumericCellEditor();
+//checkboxCellEditorFactory() => new CheckboxCellEditor();
+//
+//
+//
+//
+//setupDartInterface() {
+//
+//}
 
-export 'numeric.dart';
 
-numericCellEditorFactory() => new NumericCellEditor();
-checkboxCellEditorFactory() => new CheckboxCellEditor();
-
-initEditors() {
-  createClass('NumericCellEditor', new NumericCellEditorMethods().getPrototype());
-  createClass('CheckboxCellEditor', new CheckboxCellEditorMethods().getPrototype());
-}
+//initEditors() {
+//  createClass('NumericCellEditor', new NumericCellEditorMethods().getPrototype());
+//  createClass('CheckboxCellEditor', new CheckboxCellEditorMethods().getPrototype());
+//}

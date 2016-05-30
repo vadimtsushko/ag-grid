@@ -290,6 +290,14 @@ class GetContextMenuItemsParams  {
   var columnApi;
 }
 
+//class CarItem {
+//  String make;
+//  String model;
+//  int price;
+//  int startDate;
+//  String topSeller;
+//}
+
 //class CellEditorPrototype {
 //// gets called once after the editor is created
 //VoidFunc1 init;
