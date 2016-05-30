@@ -9,7 +9,7 @@ import 'column.dart';
 export 'rownode.dart';
 export 'column.dart';
 export 'custom_filter.dart';
-export '../editors/editors.dart';
+export 'dart_interface.dart';
 
 part 'localizations.dart';
 part 'anonymous_wrappers.dart';
