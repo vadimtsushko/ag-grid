@@ -55,6 +55,7 @@ class RowNode {
   external void selectThisNode(bool newValue);
   external void addEventListener(String eventType, Function listener);
   external void removeEventListener(String eventType, Function listener);
+  external void setSelected(bool newValue, bool clearSelection);
 }
 
 /*
