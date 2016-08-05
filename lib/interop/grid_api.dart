@@ -62,6 +62,7 @@ class GridApi {
   external void forEachNodeAfterFilterAndSort(Function callback);
   external void destroy();
   external GridCell getFocusedCell();
+  external void setFocusedCell(int rowIndex,String colId, [String floating]);
   external void onFilterChanged();
   external void onBeforeFilterChanged();
   external void onAfterFilterChanged();
