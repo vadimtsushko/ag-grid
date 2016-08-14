@@ -26,6 +26,9 @@ class GridApi {
   external void refreshHeader();
   external refreshGroup();
 
+  external void ensureIndexVisible(int index);
+  external void ensureNodeVisible(RowNode node);
+
   external bool isAnyFilterPresent();
   external bool isAdvancedFilterPresent();
   external bool isQuickFilterPresent();
