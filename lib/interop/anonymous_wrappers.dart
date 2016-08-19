@@ -219,6 +219,15 @@ class GroupCellRenderer {
 
 @JS()
 @anonymous
+class CellEditorParams {
+  external List<String> get values;
+  external set values(List<String> value);
+  external factory CellEditorParams ({
+    List<String> values});
+}
+
+@JS()
+@anonymous
 class FileBrowserItem {
   external bool get folder;
   external set folder(bool value);
@@ -267,7 +276,6 @@ class MenuItem {
     bool checked,
     dynamic icon});
 }
-
 
 @JS()
 @anonymous
@@ -673,8 +681,8 @@ class ColumnDef {
   external set comparator(Function value);
   external dynamic get cellEditor;
   external set cellEditor(dynamic value);
-  external dynamic get cellEditorParams;
-  external set cellEditorParams(dynamic value);
+  external CellEditorParams get cellEditorParams;
+  external set cellEditorParams(CellEditorParams value);
   external dynamic get filter;
   external set filter(dynamic value);
   external FilterParams get filterParams;
@@ -721,7 +729,7 @@ class ColumnDef {
     dynamic checkboxSelection,
     Function comparator,
     dynamic cellEditor,
-    dynamic cellEditorParams,
+    CellEditorParams cellEditorParams,
     dynamic filter,
     FilterParams filterParams,
     Func1<RendererParam, String> headerValueGetter,

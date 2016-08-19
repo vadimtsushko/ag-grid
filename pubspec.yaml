@@ -1,5 +1,5 @@
 name: 'ag_grid'
-version: 0.2.5-dev
+version: 0.2.6-dev
 description: Dart wrapper for ag-grid
 author: Vadim Tsushko <vadimtsushko@gmail.com>
 

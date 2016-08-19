@@ -103,7 +103,7 @@ class ColumnDef {
   var checkboxSelection;
   Function comparator;
   var cellEditor;
-  var cellEditorParams;
+  CellEditorParams cellEditorParams;
   var filter;
   FilterParams filterParams;
   Func1<RendererParam, String> headerValueGetter;
@@ -115,6 +115,11 @@ class AbstractColDef {
   String columnGroupShow;
   dynamic headerClass;
 }
+
+class CellEditorParams {
+  List<String> values;
+}
+
 
 class ColGroupDef {
   List<AbstractColDef> children;
