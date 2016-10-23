@@ -103,7 +103,7 @@ class ColumnDef {
   var checkboxSelection;
   Function comparator;
   var cellEditor;
-  CellEditorParams cellEditorParams;
+  var cellEditorParams;
   var filter;
   FilterParams filterParams;
   Func1<RendererParam, String> headerValueGetter;
@@ -294,6 +294,17 @@ class GetContextMenuItemsParams  {
   var context;
   var columnApi;
 }
+
+
+
+//class CellEditorWrapper {
+//  VoidFunc1<dynamic> init;
+//  Func0<dynamic> getGui;
+//  VoidFunc0 afterGuiAttached;
+//  Func0<String> getValue;
+//  VoidFunc0 destroy;
+//  Func0<bool> isPopup;
+//}
 
 //class CarItem {
 //  String make;
