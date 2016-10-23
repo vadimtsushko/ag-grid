@@ -75,6 +75,8 @@ class GridApi {
   external List<RowNode> getSelectedNodes();
   external List getSelectedRows();
   external FilterApi getFilterApi(key);
+  external FilterApi getFilterInstance(dynamic /*String|Column|ColDef*/ key);
+
   external void setFilterModel(model);
   external getFilterModel();
 
@@ -159,17 +161,3 @@ setDatasource(datasource: any): void;
 }
 
 
-@JS()
-class FilterApi {
-  external setFilter(value);
-  external getFilter();
-  external setType(int type);
-  external int getType();
-  external getModel();
-  external setModel(model);
-
-
-  external selectEverything();
-  external selectValue(value);
-  external selectNothing();
-}

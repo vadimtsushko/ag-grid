@@ -10,7 +10,7 @@ import "package:js/js.dart";
 rowNumCellRendererFunc(RendererParam params) {
 //  var map = obj.toMap(params);
 //  print('Params : $map');
-  return params.node.id + 1;
+  return params.node.id;
 }
 
 main() async {

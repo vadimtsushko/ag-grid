@@ -12,7 +12,7 @@ import 'dart:math' as math;
 rowNumCellRendererFunc(RendererParam params) {
 //  var keys = obj.keys(p);
 //  print('Params keys: $keys');
-  return params.node.id + 1;
+  return params.node.id;
 }
 
 main() async {

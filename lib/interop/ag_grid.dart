@@ -10,11 +10,11 @@ export 'rownode.dart';
 export 'column.dart';
 export 'custom_filter.dart';
 export 'dart_interface.dart';
-
 part 'localizations.dart';
 part 'anonymous_wrappers.dart';
 part 'grid_api.dart';
 part 'column_api.dart';
+part 'filter.dart';
 
 @JS()
 external initialiseAgGridWithWebComponents();
@@ -32,17 +32,17 @@ class FilterType {
 }
 
 class NumberFilterType {
-  static const EQUALS = 1;
-  static const NOT_EQUAL = 2;
-  static const LESS_THAN = 3;
-  static const LESS_THAN_OR_EQUAL = 4;
-  static const GREATER_THAN = 5;
-  static const GREATER_THAN_OR_EQUAL = 6;
+  static const EQUALS = 'equals';
+  static const NOT_EQUAL = 'notEqual';
+  static const LESS_THAN = 'lessThan';
+  static const LESS_THAN_OR_EQUAL = 'lessThanOrEqual';
+  static const GREATER_THAN = 'greaterThan';
+  static const GREATER_THAN_OR_EQUAL = 'greaterThanOrEqual';
 }
 class TextFilterType {
-  static const CONTAINS = 1;
-  static const EQUALS = 2;
-  static const NOT_EQUALS = 3;
-  static const STARTS_WITH = 4;
-  static const ENDS_WITH = 5;
+  static const CONTAINS = 'contains';
+  static const EQUALS = 'equals';
+  static const NOT_EQUALS = 'notEquals';
+  static const STARTS_WITH = 'startsWith';
+  static const ENDS_WITH = 'endsWith';
 }

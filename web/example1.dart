@@ -5,7 +5,6 @@ import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 
-
 void main() {
   initialiseAgGridWithWebComponents();
 
@@ -20,7 +19,7 @@ void main() {
     {'make': "Toyota", 'model': "Celica", 'price': 35000},
     {'make': "Ford", 'model': "Mondeo", 'price': 32000},
     {'make': "Porsche", 'model': "Boxter", 'price': 72000}
-  ].map((row)=> new JsObject.jsify(row)).toList();
+  ].map((row) => new JsObject.jsify(row)).toList();
 
   GridOptions go = new GridOptions(
       columnDefs: columnDefs,

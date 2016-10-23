@@ -20,7 +20,7 @@ void main() {
   setupDartInterface();
 //  createClass('dartInterface', 'NumericCellEditor', NumericCellEditorMethods.getPrototype());
   var priceColumn =
-      new ColumnDef(headerName: 'Price', field: 'price', editable: true);
+      new ColumnDef(headerName: 'Price', field: 'price', editable: true, filter: 'number');
 //  priceColumn.cellEditor = allowInterop(numericCellEditorFactory);
   //assignNumericCellEditor(priceColumn);
   var gridDiv = querySelector('#myGrid');

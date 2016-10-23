@@ -39,7 +39,7 @@ onCellFocused(RendererParam params) {
 }
 
 getNodeChildDetails(FileBrowserItem file) {
-  if (file.folder) {
+  if (file.folder == true) {
     return new getNodeChildDetailsResult(
         group: true, children: file.children, expanded: file.open);
   } else {
