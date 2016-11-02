@@ -30,6 +30,7 @@ class LocaleText {
   String blanks;
   String equals;
   String notEqual;
+  String notEquals;
   String greaterThanOrEqual;
   String lessThanOrEqual;
   String lessThan;
@@ -221,9 +222,9 @@ class GridOptions {
   VoidFunc1<RendererParam> onGridSizeChanged;
 
   VoidFunc0 onModelUpdated;
-  VoidFunc0 onSelectionChanged;
+  VoidFunc1 onSelectionChanged;
   VoidFunc1 onBeforeFilterChanged;
-  VoidFunc0 onAfterFilterChanged;
+  VoidFunc1 onAfterFilterChanged;
   VoidFunc0 onFilterModified;
   VoidFunc0 onBeforeSortChanged;
   VoidFunc0 onAfterSortChanged;

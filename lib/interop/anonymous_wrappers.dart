@@ -83,6 +83,8 @@ class LocaleText {
   external set equals(String value);
   external String get notEqual;
   external set notEqual(String value);
+  external String get notEquals;
+  external set notEquals(String value);
   external String get greaterThanOrEqual;
   external set greaterThanOrEqual(String value);
   external String get lessThanOrEqual;
@@ -130,6 +132,7 @@ class LocaleText {
     String blanks,
     String equals,
     String notEqual,
+    String notEquals,
     String greaterThanOrEqual,
     String lessThanOrEqual,
     String lessThan,
@@ -483,12 +486,12 @@ class GridOptions {
   external set onGridSizeChanged(VoidFunc1<RendererParam> value);
   external VoidFunc0 get onModelUpdated;
   external set onModelUpdated(VoidFunc0 value);
-  external VoidFunc0 get onSelectionChanged;
-  external set onSelectionChanged(VoidFunc0 value);
+  external VoidFunc1 get onSelectionChanged;
+  external set onSelectionChanged(VoidFunc1 value);
   external VoidFunc1 get onBeforeFilterChanged;
   external set onBeforeFilterChanged(VoidFunc1 value);
-  external VoidFunc0 get onAfterFilterChanged;
-  external set onAfterFilterChanged(VoidFunc0 value);
+  external VoidFunc1 get onAfterFilterChanged;
+  external set onAfterFilterChanged(VoidFunc1 value);
   external VoidFunc0 get onFilterModified;
   external set onFilterModified(VoidFunc0 value);
   external VoidFunc0 get onBeforeSortChanged;
@@ -546,9 +549,9 @@ class GridOptions {
     VoidFunc1<RendererParam> onVirtualRowRemoved,
     VoidFunc1<RendererParam> onGridSizeChanged,
     VoidFunc0 onModelUpdated,
-    VoidFunc0 onSelectionChanged,
+    VoidFunc1 onSelectionChanged,
     VoidFunc1 onBeforeFilterChanged,
-    VoidFunc0 onAfterFilterChanged,
+    VoidFunc1 onAfterFilterChanged,
     VoidFunc0 onFilterModified,
     VoidFunc0 onBeforeSortChanged,
     VoidFunc0 onAfterSortChanged,

@@ -124,7 +124,6 @@ class SimpleCustomTextEditor {
   InputElement input;
   Func0<CellEditorWrapper> get cellEditor => allowInterop(createCustomEditor);
 
-
   CellEditorWrapper createCustomEditor() {
     CellEditorWrapper result = new CellEditorWrapper();
     result.init = allowInterop((CellEditorInitParams params) {
