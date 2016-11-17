@@ -150,10 +150,10 @@ createNewDatasource() {
 
   var dataSource = new Datasource(
       //rowCount: ???, - not setting the row count, infinite paging will be used
-      pageSize: pageSize, // changing to number, as scope keeps it as a string
-      overflowSize: pageSize,
-      maxConcurrentRequests: 2,
-      maxPagesInCache: 2,
+      paginationPageSize: pageSize, // changing to number, as scope keeps it as a string
+      paginationOverflowSize: pageSize,
+      maxConcurrentDatasourceRequests: 2,
+      maxPagesInPaginationCache: 2,
       getRows: allowInterop(getRows));
 
   gridOptions.api.setDatasource(dataSource);

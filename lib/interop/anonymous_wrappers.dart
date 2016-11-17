@@ -283,24 +283,24 @@ class MenuItem {
 @JS()
 @anonymous
 class Datasource {
-  external int get pageSize;
-  external set pageSize(int value);
+  external int get paginationPageSize;
+  external set paginationPageSize(int value);
   external int get rowCount;
   external set rowCount(int value);
-  external int get overflowSize;
-  external set overflowSize(int value);
-  external int get maxConcurrentRequests;
-  external set maxConcurrentRequests(int value);
-  external int get maxPagesInCache;
-  external set maxPagesInCache(int value);
+  external int get paginationOverflowSize;
+  external set paginationOverflowSize(int value);
+  external int get maxConcurrentDatasourceRequests;
+  external set maxConcurrentDatasourceRequests(int value);
+  external int get maxPagesInPaginationCache;
+  external set maxPagesInPaginationCache(int value);
   external VoidFunc1<GetRowsParam> get getRows;
   external set getRows(VoidFunc1<GetRowsParam> value);
   external factory Datasource ({
-    int pageSize,
+    int paginationPageSize,
     int rowCount,
-    int overflowSize,
-    int maxConcurrentRequests,
-    int maxPagesInCache,
+    int paginationOverflowSize,
+    int maxConcurrentDatasourceRequests,
+    int maxPagesInPaginationCache,
     VoidFunc1<GetRowsParam> getRows});
 }
 

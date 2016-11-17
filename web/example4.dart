@@ -66,7 +66,7 @@ main() async {
 
     var dataSource = new Datasource(
         //rowCount: ???, - not setting the row count, infinite paging will be used
-        pageSize: pageSize, // changing to number, as scope keeps it as a string
+        paginationPageSize: pageSize, // changing to number, as scope keeps it as a string
         getRows: allowInterop(getRows));
 
     gridOptions.api.setDatasource(dataSource);

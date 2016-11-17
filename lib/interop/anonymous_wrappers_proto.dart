@@ -156,11 +156,11 @@ class GetRowsParam {
 }
 
 class Datasource {
-  int pageSize;
+  int paginationPageSize;
   int rowCount;
-  int overflowSize;
-  int maxConcurrentRequests;
-  int maxPagesInCache;
+  int paginationOverflowSize;
+  int maxConcurrentDatasourceRequests;
+  int maxPagesInPaginationCache;
   VoidFunc1<GetRowsParam> getRows;
 }
 
