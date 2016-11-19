@@ -156,11 +156,7 @@ class GetRowsParam {
 }
 
 class Datasource {
-  int paginationPageSize;
   int rowCount;
-  int paginationOverflowSize;
-  int maxConcurrentDatasourceRequests;
-  int maxPagesInPaginationCache;
   VoidFunc1<GetRowsParam> getRows;
 }
 
@@ -178,6 +174,12 @@ class GridOptions {
   ColumnApi columnApi;
   List<ColumnDef> columnDefs;
   var rowData;
+  int paginationPageSize;
+  int viewportRowModelPageSize;
+  int viewportRowModelBufferSize;
+  int paginationOverflowSize;
+  int maxConcurrentDatasourceRequests;
+  int maxPagesInPaginationCache;
   bool virtualPaging;
   bool toolPanelSuppressGroups;
   bool toolPanelSuppressValues;
@@ -226,8 +228,9 @@ class GridOptions {
   VoidFunc1 onBeforeFilterChanged;
   VoidFunc1 onAfterFilterChanged;
   VoidFunc0 onFilterModified;
-  VoidFunc0 onBeforeSortChanged;
-  VoidFunc0 onAfterSortChanged;
+  VoidFunc1 onBeforeSortChanged;
+  VoidFunc1 onAfterSortChanged;
+  VoidFunc1 onViewportChanged;
   Func0<bool> isExternalFilterPresent;
   Func1<RowNode, bool> doesExternalFilterPass;
 }
@@ -296,7 +299,22 @@ class GetContextMenuItemsParams  {
   var columnApi;
 }
 
+class ViewportDatasource {
+  VoidFunc1<ViewportDatasourceParams> init;
+  VoidFunc2<int, int> setViewportRange;
+  VoidFunc0 destroy;
+}
 
+class ViewportDatasourceParams {
+  VoidFunc1<num> setRowCount;
+
+  /// datasource calls this when new data arrives. The grid then updates the provided rows. The rows are mapped [rowIndex]=>rowData].
+  VoidFunc1<dynamic /*JSMap of <num,dynamic>*/ > setRowData;
+
+  /// datasource calls this when it wants a row node - typically used when it wants to update the row node
+  Func1<num, dynamic> getRow;
+
+}
 
 //class CellEditorWrapper {
 //  VoidFunc1<dynamic> init;

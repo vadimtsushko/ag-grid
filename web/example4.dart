@@ -66,7 +66,6 @@ main() async {
 
     var dataSource = new Datasource(
         //rowCount: ???, - not setting the row count, infinite paging will be used
-        paginationPageSize: pageSize, // changing to number, as scope keeps it as a string
         getRows: allowInterop(getRows));
 
     gridOptions.api.setDatasource(dataSource);
@@ -79,6 +78,7 @@ main() async {
   gridOptions = new GridOptions(
       columnDefs: columnDefs,
       enableFilter: true,
+      paginationPageSize: pageSize,
       enableSorting: true,
       rowSelection: 'multiple',
       rowDeselection: true,

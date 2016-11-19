@@ -258,6 +258,36 @@ class FileBrowserItem {
 
 @JS()
 @anonymous
+class ViewportDatasource {
+  external VoidFunc1<ViewportDatasourceParams> get init;
+  external set init(VoidFunc1<ViewportDatasourceParams> value);
+  external VoidFunc2<int, int> get setViewportRange;
+  external set setViewportRange(VoidFunc2<int, int> value);
+  external VoidFunc0 get destroy;
+  external set destroy(VoidFunc0 value);
+  external factory ViewportDatasource ({
+    VoidFunc1<ViewportDatasourceParams> init,
+    VoidFunc2<int, int> setViewportRange,
+    VoidFunc0 destroy});
+}
+
+@JS()
+@anonymous
+class ViewportDatasourceParams {
+  external VoidFunc1<num> get setRowCount;
+  external set setRowCount(VoidFunc1<num> value);
+  external VoidFunc1 get setRowData;
+  external set setRowData(VoidFunc1 value);
+  external Func1<num, dynamic> get getRow;
+  external set getRow(Func1<num, dynamic> value);
+  external factory ViewportDatasourceParams ({
+    VoidFunc1<num> setRowCount,
+    VoidFunc1 setRowData,
+    Func1<num, dynamic> getRow});
+}
+
+@JS()
+@anonymous
 class MenuItem {
   external String get name;
   external set name(String value);
@@ -283,24 +313,12 @@ class MenuItem {
 @JS()
 @anonymous
 class Datasource {
-  external int get paginationPageSize;
-  external set paginationPageSize(int value);
   external int get rowCount;
   external set rowCount(int value);
-  external int get paginationOverflowSize;
-  external set paginationOverflowSize(int value);
-  external int get maxConcurrentDatasourceRequests;
-  external set maxConcurrentDatasourceRequests(int value);
-  external int get maxPagesInPaginationCache;
-  external set maxPagesInPaginationCache(int value);
   external VoidFunc1<GetRowsParam> get getRows;
   external set getRows(VoidFunc1<GetRowsParam> value);
   external factory Datasource ({
-    int paginationPageSize,
     int rowCount,
-    int paginationOverflowSize,
-    int maxConcurrentDatasourceRequests,
-    int maxPagesInPaginationCache,
     VoidFunc1<GetRowsParam> getRows});
 }
 
@@ -402,6 +420,18 @@ class GridOptions {
   external set columnDefs(List<ColumnDef> value);
   external dynamic get rowData;
   external set rowData(dynamic value);
+  external int get paginationPageSize;
+  external set paginationPageSize(int value);
+  external int get viewportRowModelPageSize;
+  external set viewportRowModelPageSize(int value);
+  external int get viewportRowModelBufferSize;
+  external set viewportRowModelBufferSize(int value);
+  external int get paginationOverflowSize;
+  external set paginationOverflowSize(int value);
+  external int get maxConcurrentDatasourceRequests;
+  external set maxConcurrentDatasourceRequests(int value);
+  external int get maxPagesInPaginationCache;
+  external set maxPagesInPaginationCache(int value);
   external bool get virtualPaging;
   external set virtualPaging(bool value);
   external bool get toolPanelSuppressGroups;
@@ -494,10 +524,12 @@ class GridOptions {
   external set onAfterFilterChanged(VoidFunc1 value);
   external VoidFunc0 get onFilterModified;
   external set onFilterModified(VoidFunc0 value);
-  external VoidFunc0 get onBeforeSortChanged;
-  external set onBeforeSortChanged(VoidFunc0 value);
-  external VoidFunc0 get onAfterSortChanged;
-  external set onAfterSortChanged(VoidFunc0 value);
+  external VoidFunc1 get onBeforeSortChanged;
+  external set onBeforeSortChanged(VoidFunc1 value);
+  external VoidFunc1 get onAfterSortChanged;
+  external set onAfterSortChanged(VoidFunc1 value);
+  external VoidFunc1 get onViewportChanged;
+  external set onViewportChanged(VoidFunc1 value);
   external Func0<bool> get isExternalFilterPresent;
   external set isExternalFilterPresent(Func0<bool> value);
   external Func1<RowNode, bool> get doesExternalFilterPass;
@@ -507,6 +539,12 @@ class GridOptions {
     ColumnApi columnApi,
     List<ColumnDef> columnDefs,
     dynamic rowData,
+    int paginationPageSize,
+    int viewportRowModelPageSize,
+    int viewportRowModelBufferSize,
+    int paginationOverflowSize,
+    int maxConcurrentDatasourceRequests,
+    int maxPagesInPaginationCache,
     bool virtualPaging,
     bool toolPanelSuppressGroups,
     bool toolPanelSuppressValues,
@@ -553,8 +591,9 @@ class GridOptions {
     VoidFunc1 onBeforeFilterChanged,
     VoidFunc1 onAfterFilterChanged,
     VoidFunc0 onFilterModified,
-    VoidFunc0 onBeforeSortChanged,
-    VoidFunc0 onAfterSortChanged,
+    VoidFunc1 onBeforeSortChanged,
+    VoidFunc1 onAfterSortChanged,
+    VoidFunc1 onViewportChanged,
     Func0<bool> isExternalFilterPresent,
     Func1<RowNode, bool> doesExternalFilterPass});
 }

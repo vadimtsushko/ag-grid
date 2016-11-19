@@ -1,6 +1,5 @@
 part of agGrid;
 
-
 @JS()
 class GridApi {
   external String getDataAsCsv(CsvExportParams params);
@@ -65,20 +64,25 @@ class GridApi {
   external void forEachNodeAfterFilterAndSort(Function callback);
   external void destroy();
   external GridCell getFocusedCell();
-  external void setFocusedCell(int rowIndex,String colId, [String floating]);
+  external void setFocusedCell(int rowIndex, String colId, [String floating]);
   external void onFilterChanged();
   external void onBeforeFilterChanged();
   external void onAfterFilterChanged();
   external void onFilterModified();
   external void copySelectedRowsToClipboard();
   external void copySelectedRangeToClipboard();
+  external void setViewportDatasource(ViewportDatasource datasource);
   external List<RowNode> getSelectedNodes();
   external List getSelectedRows();
   external FilterApi getFilterApi(key);
+  external void setSortModel(dynamic sortModel);
+  external List getSortModel();
   external FilterApi getFilterInstance(dynamic /*String|Column|ColDef*/ key);
 
   external void setFilterModel(model);
   external getFilterModel();
+
+
 
 /*
     selectNode(node: any, tryMulti?: boolean, suppressEvents?: boolean): void;
@@ -130,23 +134,21 @@ class GridApi {
  */
 }
 
-
 @JS()
 class GridCell {
   external int get rowIndex;
   external String get floating;
 }
 
-
 @JS()
-class RowModel{
+class RowModel {
   external List<RowNode> getTopLevelNodes();
   external RowNode getRow(int index);
   external int getRowCount();
   external int getRowAtPixel(int pixel);
   external num getRowCombinedHeight();
   external bool isRowsToRender();
-  external bool  isEmpty();
+  external bool isEmpty();
   external void expandOrCollapseAll(bool expand);
 /*
 export interface IRowModel {
@@ -159,5 +161,3 @@ setRowData(rows: any[], refresh: boolean, firstId?: number): void;
 setDatasource(datasource: any): void;
 */
 }
-
-

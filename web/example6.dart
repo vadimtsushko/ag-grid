@@ -9,7 +9,7 @@ import "package:js/js.dart";
 import 'package:ag_grid/js_object_api.dart' as jsObjApi;
 import 'dart:async';
 import 'dart:math' as math;
-
+import 'dart:js_util';
 var pageSize = 100;
 GridOptions gridOptions;
 List allOfTheData;
@@ -134,7 +134,7 @@ getRows(GetRowsParam params) async {
 
     var rowsThisPage = dataAfterSortingAndFiltering.sublist(params.startRow,
         math.min(params.endRow, dataAfterSortingAndFiltering.length));
-    params.successCallback(rowsThisPage, lastRow);
+    params.successCallback(jsify(rowsThisPage), lastRow);
   });
 }
 
@@ -150,10 +150,6 @@ createNewDatasource() {
 
   var dataSource = new Datasource(
       //rowCount: ???, - not setting the row count, infinite paging will be used
-      paginationPageSize: pageSize, // changing to number, as scope keeps it as a string
-      paginationOverflowSize: pageSize,
-      maxConcurrentDatasourceRequests: 2,
-      maxPagesInPaginationCache: 2,
       getRows: allowInterop(getRows));
 
   gridOptions.api.setDatasource(dataSource);
@@ -333,8 +329,13 @@ main() async {
       columnDefs: columnDefs,
       enableFilter: true,
       enableSorting: true,
+      paginationPageSize: pageSize, // changing to number, as scope keeps it as a string
+      paginationOverflowSize: pageSize,
+      maxConcurrentDatasourceRequests: 2,
+      maxPagesInPaginationCache: 2,
       rowSelection: 'multiple',
-      enableServerSideSorting: true,
+      rowModelType: 'virtual',
+  enableServerSideSorting: true,
       enableServerSideFilter: true,
       virtualPaging: true,
       rowDeselection: true,
@@ -343,6 +344,5 @@ main() async {
   new Grid(gridDiv, gridOptions);
   var path = 'olympicWinners.json';
   allOfTheData = JSON.decode(await HttpRequest.getString(path));
-  var rowData = new JsObject.jsify(allOfTheData);
-  setRowData(rowData);
+  setRowData(allOfTheData);
 }
