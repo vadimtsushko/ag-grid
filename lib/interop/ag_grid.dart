@@ -11,6 +11,7 @@ export 'column.dart';
 export 'custom_filter.dart';
 export 'dart_interface.dart';
 export 'custom_editor.dart';
+export 'date_filter.dart';
 
 part 'localizations.dart';
 part 'anonymous_wrappers.dart';

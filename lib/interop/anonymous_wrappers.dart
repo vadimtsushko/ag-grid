@@ -153,6 +153,36 @@ class LocaleText {
 
 @JS()
 @anonymous
+class IFilterParams {
+  external Column get column;
+  external set column(Column value);
+  external ColumnDef get colDef;
+  external set colDef(ColumnDef value);
+  external RowModel get rowModel;
+  external set rowModel(RowModel value);
+  external VoidFunc0 get filterChangedCallback;
+  external set filterChangedCallback(VoidFunc0 value);
+  external VoidFunc0 get filterModifiedCallback;
+  external set filterModifiedCallback(VoidFunc0 value);
+  external Func1<RowNode, dynamic> get valueGetter;
+  external set valueGetter(Func1<RowNode, dynamic> value);
+  external Func1<RowNode, bool> get doesRowPassOtherFilter;
+  external set doesRowPassOtherFilter(Func1<RowNode, bool> value);
+  external dynamic get context;
+  external set context(dynamic value);
+  external factory IFilterParams ({
+    Column column,
+    ColumnDef colDef,
+    RowModel rowModel,
+    VoidFunc0 filterChangedCallback,
+    VoidFunc0 filterModifiedCallback,
+    Func1<RowNode, dynamic> valueGetter,
+    Func1<RowNode, bool> doesRowPassOtherFilter,
+    dynamic context});
+}
+
+@JS()
+@anonymous
 class StringIcons {
   external String get menu;
   external set menu(String value);
@@ -227,6 +257,30 @@ class CellEditorParams {
   external set values(List<String> value);
   external factory CellEditorParams ({
     List<String> values});
+}
+
+@JS()
+@anonymous
+class DateFilterModel {
+  external String get filterType;
+  external set filterType(String value);
+  external int get filterValue;
+  external set filterValue(int value);
+  external factory DateFilterModel ({
+    String filterType,
+    int filterValue});
+}
+
+@JS()
+@anonymous
+class IDoesFilterPassParams {
+  external RowNode get rowNode;
+  external set rowNode(RowNode value);
+  external dynamic get data;
+  external set data(dynamic value);
+  external factory IDoesFilterPassParams ({
+    RowNode rowNode,
+    dynamic data});
 }
 
 @JS()
@@ -600,6 +654,54 @@ class GridOptions {
 
 @JS()
 @anonymous
+class IFilter {
+  external VoidFunc1<IFilterParams> get init;
+  external set init(VoidFunc1<IFilterParams> value);
+  external Func0 get getGui;
+  external set getGui(Func0 value);
+  external Func0<bool> get isFilterActive;
+  external set isFilterActive(Func0<bool> value);
+  external Func1<IDoesFilterPassParams, bool> get doesFilterPass;
+  external set doesFilterPass(Func1<IDoesFilterPassParams, bool> value);
+  external Func0 get getModel;
+  external set getModel(Func0 value);
+  external VoidFunc1 get setModel;
+  external set setModel(VoidFunc1 value);
+  external Func0<String> get getType;
+  external set getType(Func0<String> value);
+  external VoidFunc1<String> get setType;
+  external set setType(VoidFunc1<String> value);
+  external Func0 get getFilter;
+  external set getFilter(Func0 value);
+  external VoidFunc1 get setFilter;
+  external set setFilter(VoidFunc1 value);
+  external VoidFunc1<IAfterFilterGuiAttachedParams> get afterGuiAttached;
+  external set afterGuiAttached(VoidFunc1<IAfterFilterGuiAttachedParams> value);
+  external VoidFunc0 get onNewRowsLoaded;
+  external set onNewRowsLoaded(VoidFunc0 value);
+  external VoidFunc0 get destroy;
+  external set destroy(VoidFunc0 value);
+  external Func0 get getFrameworkComponentInstance;
+  external set getFrameworkComponentInstance(Func0 value);
+  external factory IFilter ({
+    VoidFunc1<IFilterParams> init,
+    Func0 getGui,
+    Func0<bool> isFilterActive,
+    Func1<IDoesFilterPassParams, bool> doesFilterPass,
+    Func0 getModel,
+    VoidFunc1 setModel,
+    Func0<String> getType,
+    VoidFunc1<String> setType,
+    Func0 getFilter,
+    VoidFunc1 setFilter,
+    VoidFunc1<IAfterFilterGuiAttachedParams> afterGuiAttached,
+    VoidFunc0 onNewRowsLoaded,
+    VoidFunc0 destroy,
+    Func0 getFrameworkComponentInstance});
+}
+
+@JS()
+@anonymous
 class AbstractColDef {
   external String get headerName;
   external set headerName(String value);
@@ -800,5 +902,14 @@ class GetContextMenuItemsParams {
     dynamic value,
     dynamic context,
     dynamic columnApi});
+}
+
+@JS()
+@anonymous
+class IAfterFilterGuiAttachedParams {
+  external VoidFunc1 get hidePopup;
+  external set hidePopup(VoidFunc1 value);
+  external factory IAfterFilterGuiAttachedParams ({
+    VoidFunc1 hidePopup});
 }
 

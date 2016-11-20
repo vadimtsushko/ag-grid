@@ -109,18 +109,6 @@ List filterData(filterModel, List data) {
 }
 
 getRows(GetRowsParam params) async {
-  // this code should contact the server for rows. however for the purposes of the demo,
-  // the data is generated locally, a timer is used to give the experience of
-  // an asynchronous call
-
-//    var sortModel = params.sortModel;
-//    print('SortModel: $sortModel');
-//    if(sortModel != null && sortModel.length > 0) {
-//      var item = obj.toMap(sortModel[0]);
-//      print('Sort item: $item');
-//      print('Sort item colId: ${sortModel[0].colId}');
-//
-//    }
 
   print('asking for ${params.startRow} to  ${params.endRow}');
   var dataAfterSortingAndFiltering =
@@ -331,6 +319,7 @@ main() async {
       enableSorting: true,
       paginationPageSize: pageSize,
       rowSelection: 'multiple',
+      rowModelType : 'virtual',
       enableServerSideSorting: true,
       enableServerSideFilter: true,
       rowDeselection: true,

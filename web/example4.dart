@@ -8,7 +8,7 @@ import 'dart:convert';
 import "package:js/js.dart";
 import 'dart:async';
 import 'dart:math' as math;
-
+import 'dart:js_util';
 rowNumCellRendererFunc(RendererParam params) {
 //  var keys = obj.keys(p);
 //  print('Params keys: $keys');
@@ -72,13 +72,13 @@ main() async {
   }
   setRowData(rowData) {
     allOfTheData = rowData;
+
     createNewDatasource();
   }
 
   gridOptions = new GridOptions(
       columnDefs: columnDefs,
       enableFilter: true,
-      paginationPageSize: pageSize,
       enableSorting: true,
       rowSelection: 'multiple',
       rowDeselection: true,
@@ -87,6 +87,6 @@ main() async {
   new Grid(gridDiv, gridOptions);
   var path = 'olympicWinners.json';
   allOfTheData = JSON.decode(await HttpRequest.getString(path));
-  var rowData = new JsObject.jsify(allOfTheData);
-  setRowData(rowData);
+  var rowData = jsify(allOfTheData);
+  gridOptions.api.setRowData(rowData);
 }

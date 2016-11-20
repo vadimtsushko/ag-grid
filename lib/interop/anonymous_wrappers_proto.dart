@@ -8,6 +8,9 @@ class GridApi {}
 @stub
 class RowNode {}
 @stub
+class RowModel {}
+
+@stub
 class Column {}
 @stub
 class ColumnApi {}
@@ -167,6 +170,53 @@ class FilterParams {
   String newRowsAction;
   bool apply;
   bool suppressRemoveEntries;
+}
+
+
+/// New Filter interfaces
+
+class IFilterParams {
+  Column column;
+  ColumnDef colDef;
+  RowModel rowModel;
+  VoidFunc0 filterChangedCallback;
+  VoidFunc0 filterModifiedCallback;
+  Func1<RowNode,dynamic> valueGetter;
+  Func1<RowNode,bool> doesRowPassOtherFilter;
+  var context;
+}
+
+class IAfterFilterGuiAttachedParams {
+  VoidFunc1 hidePopup;
+}
+
+class IDoesFilterPassParams {
+  RowNode rowNode;
+  var data;
+}
+
+class DateFilterModel {
+  String filterType;
+  int filterValue;
+}
+
+
+class IFilter {
+  VoidFunc1<IFilterParams> init;
+  Func0 getGui;
+  Func0<bool> isFilterActive;
+  Func1<IDoesFilterPassParams,bool> doesFilterPass;
+  Func0 getModel;
+  VoidFunc1 setModel;
+  Func0<String> getType;
+  VoidFunc1<String> setType;
+  Func0 getFilter;
+  VoidFunc1 setFilter;
+
+  VoidFunc1<IAfterFilterGuiAttachedParams> afterGuiAttached;
+  VoidFunc0 onNewRowsLoaded;
+  VoidFunc0 destroy;
+  Func0 getFrameworkComponentInstance;
 }
 
 class GridOptions {
