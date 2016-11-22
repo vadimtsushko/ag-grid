@@ -8,20 +8,22 @@ import 'dart:math' as math;
 import 'dart:js_util' as js_util;
 import 'package:func/func.dart';
 
-class IvDateFilter {
-  static int NULL_DATE_VALUE = new DateTime.utc(1900).millisecondsSinceEpoch;
+class DateHelper {
+  static String NULL_DATE_VALUE = '0000-00-00';
   SelectElement selectElement;
   DateInputElement input;
   DateFilterModel model = new DateFilterModel();
 
-  int filterValue;
+  String filterValue;
 
   VoidFunc0 filterChangedCallback;
   VoidFunc0 filterModifiedCallback;
   Func1<RowNode, dynamic> valueGetter;
   Func1<RowNode, bool> doesRowPassOtherFilter;
+  List<StreamSubscription> subscriptions = [];
 
   Func0<IFilter> get filter => allowInterop(createFilter);
+
   IFilter createFilter() {
     IFilter result = new IFilter();
     result.getGui = allowInterop(getGui);
@@ -33,6 +35,7 @@ class IvDateFilter {
     result.setFilter = allowInterop(setFilter);
     result.setType = allowInterop(setType);
     result.getFilter = allowInterop(getFilter);
+    result.destroy = allowInterop(destroy);
     result.getType = allowInterop(getType);
 
     result.init = allowInterop(init);
@@ -66,8 +69,9 @@ class IvDateFilter {
       ..id = 'filterText';
     inputDiv.append(input);
     result.append(inputDiv);
-    selectElement.onChange.listen((_) => onTypeChanged());
-    input.onChange.listen((_) => onFilterChanged());
+    subscriptions.add(selectElement.onChange.listen((_) => onTypeChanged()));
+    subscriptions.add(input.onChange.listen((_) => onFilterChanged()));
+    model.filterType = NumberFilterType.EQUALS;
     return result;
   }
 
@@ -93,7 +97,6 @@ class IvDateFilter {
   }
 
   bool isFilterActive() {
-    print('isFilterActive');
     return filterValue != null;
   }
 
@@ -104,23 +107,28 @@ class IvDateFilter {
     if (filterValue == null) {
       return true;
     }
-    int nodeValue = valueGetter(params as RowNode);
-    print('$nodeValue ${model.filterType} $filterValue');
+    String nodeValue = valueGetter(params as RowNode);
     switch (model.filterType) {
       case NumberFilterType.EQUALS:
         return nodeValue == filterValue;
       case NumberFilterType.NOT_EQUAL:
         return nodeValue != filterValue;
       case NumberFilterType.LESS_THAN:
-        return nodeValue < filterValue;
+        return nodeValue.compareTo(filterValue) > 0;
       case NumberFilterType.LESS_THAN_OR_EQUAL:
-        return nodeValue <= filterValue;
+        return nodeValue.compareTo(filterValue) >= 0;
       case NumberFilterType.GREATER_THAN:
-        return nodeValue > filterValue;
+        return nodeValue.compareTo(filterValue) < 0;
       case NumberFilterType.GREATER_THAN_OR_EQUAL:
-        return nodeValue >= filterValue;
+        nodeValue.compareTo(filterValue) <= 0;
     }
     return false;
+  }
+
+  destroy() {
+    for (var each in subscriptions) {
+      each.cancel();
+    }
   }
 
   onTypeChanged() {
@@ -136,32 +144,18 @@ class IvDateFilter {
   }
 
   getFilter() => model.filterValue;
-  setFilter(value) {
+  setFilter(String value) {
     print('setFilter "$value"');
     if (value == null || value == '') {
       filterValue = null;
     }
-    if (value is DateTime) {
-      filterValue = value.millisecondsSinceEpoch;
-    }
-    if (value is num) {
-      filterValue = value.toInt();
-    }
-    if (value is String) {
-      var toParse = value.trim();
-      if (value == '') {
-        filterValue = null;
-      } else {
-        filterValue = int.parse(value);
-      }
 
-    }
+    filterValue = value;
 
     if (filterValue == null) {
       input.value = '';
     } else {
-      input.valueAsDate =
-          new DateTime.fromMillisecondsSinceEpoch(value);
+      input.valueAsDate = DateTime.parse(value);
     }
     filterChanged();
   }
@@ -173,7 +167,7 @@ class IvDateFilter {
   }
 
   onFilterChanged() {
-    int oldValue = filterValue;
+    String oldValue = filterValue;
     filterValue = getNewValue();
     print('onFilterChanged oldValue: $oldValue newValue: $filterValue');
     if (oldValue != filterValue) {
@@ -181,21 +175,66 @@ class IvDateFilter {
     }
   }
 
-  int getNewValue() {
+  String getNewValue() {
 //    return input.valueAsDate?.millisecondsSinceEpoch;
-    String dateStr = input.value;
-    print('getNewValue "$dateStr"');
-    if (dateStr == '') {
+    DateTime value = input.valueAsDate;
+    if (value == null) {
       return null;
     }
     try {
-      List<String> dateParts = dateStr.split('-');
-      DateTime value = new DateTime.utc(int.parse(dateParts[0]),
-          int.parse(dateParts[1]), int.parse(dateParts[2]));
-      print(value);
-      return value.millisecondsSinceEpoch;
+      return dateToComparableString(value);
     } catch (e) {
-      return NULL_DATE_VALUE;
+      return null;
     }
+  }
+
+  static String _fourDigits(int n) {
+    int absN = n.abs();
+    String sign = n < 0 ? "-" : "";
+    if (absN >= 1000) return "$n";
+    if (absN >= 100) return "${sign}0$absN";
+    if (absN >= 10) return "${sign}00$absN";
+    return "${sign}000$absN";
+  }
+
+  static String _twoDigits(int n) {
+    if (n >= 10) return "${n}";
+    return "0${n}";
+  }
+
+  static String dateValueGetter(RendererParam params) {
+    if (params.data == null) {
+      return '';
+    }
+    if (js_util.hasProperty(params.data, params.colDef.field)) {
+      DateTime value = js_util.getProperty(params.data, params.colDef.field);
+      return dateToComparableString(value);
+    }
+    return '';
+  }
+
+  static String dateToComparableString(DateTime value) {
+    if (value is! DateTime) {
+      return '';
+    }
+    return '${_fourDigits(value.year)}-${_twoDigits(value.month)}-${_twoDigits(value.day)}';
+  }
+
+  static String toRussianDate(DateTime date) {
+    if (date == null) {
+      return '';
+    }
+    return '${_twoDigits(date.day)}.${_twoDigits(date.month)}.${date.year}';
+  }
+
+  static String dateCellRenderer(RendererParam params) {
+    if (params.value == null) {
+      return '';
+    }
+    String dateStr = params.value;
+    if (dateStr == '' || dateStr == null) {
+      return '';
+    }
+    return toRussianDate(DateTime.parse(dateStr));
   }
 }

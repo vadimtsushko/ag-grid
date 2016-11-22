@@ -197,7 +197,7 @@ class IDoesFilterPassParams {
 
 class DateFilterModel {
   String filterType;
-  int filterValue;
+  String filterValue;
 }
 
 

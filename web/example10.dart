@@ -14,42 +14,10 @@ rowNumCellRendererFunc(RendererParam params) {
   return params.node.id;
 }
 
-String pad2(int value) => value < 10 ? '0$value' : '$value';
-String toRussianDate(DateTime date) {
-  if (date == null) {
-    return '';
-  }
-  return '${pad2(date.day)}.${pad2(date.month)}.${date.year}';
-}
 
-String dateCellRenderer(RendererParam params) {
-  if (params.value == null) {
-    return '';
-  }
-//  int milliseconds = int.parse(params.value.toString(), onError: (_) => null);
-  int milliseconds = params.value;
-  if (milliseconds == 0 || milliseconds == null) {
-    return '';
-  }
-  return toRussianDate(new DateTime.fromMillisecondsSinceEpoch(milliseconds));
-}
-
-int dateValueGetter(RendererParam params) {
-  if (params.data == null) {
-    return 0;
-  }
-  if (js_util.hasProperty(params.data, params.colDef.field)) {
-    DateTime value = js_util.getProperty(params.data, params.colDef.field);
-    if (value is! DateTime) {
-      return 0;
-    }
-    return value.millisecondsSinceEpoch;
-  }
-  return 0;
-}
 
 main() async {
-  var dateFilter = new IvDateFilter();
+  var dateFilter = new DateHelper();
   initialiseAgGridWithWebComponents();
   var gridDiv = querySelector('#myGrid');
   GridOptions gridOptions;
@@ -70,9 +38,9 @@ main() async {
         headerName: "Date",
         field: "date",
         width: 110,
-        valueGetter: allowInterop(dateValueGetter),
+        valueGetter: allowInterop(DateHelper.dateValueGetter),
         filter: dateFilter.filter,
-        cellRenderer: allowInterop(dateCellRenderer)),
+        cellRenderer: allowInterop(DateHelper.dateCellRenderer)),
     new ColumnDef(headerName: "Sport", field: "sport", width: 110),
     new ColumnDef(
         headerName: "Gold", field: "gold", width: 100, filter: 'number'),
@@ -198,18 +166,18 @@ List<Map<String, dynamic>> sampleData = [
     "bronze": 3,
     "total": 6
   },
-//  {
-//    "athlete": "Alicia Coutts",
-//    "age": 24,
-//    "country": "Australia",
-//    "year": 2012,
-//    "date": "12/08/2012",
-//    "sport": "Swimming",
-//    "gold": 1,
-//    "silver": 3,
-//    "bronze": 1,
-//    "total": 5
-//  },
+  {
+    "athlete": "Alicia Coutts",
+    "age": 24,
+    "country": "Australia",
+    "year": 2012,
+    "date": new DateTime.utc(2016, 11, 21),
+    "sport": "Swimming",
+    "gold": 1,
+    "silver": 3,
+    "bronze": 1,
+    "total": 5
+  },
 //  {
 //    "athlete": "Missy Franklin",
 //    "age": 17,

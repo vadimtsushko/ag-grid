@@ -264,11 +264,11 @@ class CellEditorParams {
 class DateFilterModel {
   external String get filterType;
   external set filterType(String value);
-  external int get filterValue;
-  external set filterValue(int value);
+  external String get filterValue;
+  external set filterValue(String value);
   external factory DateFilterModel ({
     String filterType,
-    int filterValue});
+    String filterValue});
 }
 
 @JS()
