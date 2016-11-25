@@ -518,6 +518,8 @@ class GridOptions {
   external set enableServerSideSorting(bool value);
   external bool get enableFilter;
   external set enableFilter(bool value);
+  external bool get enableRangeSelection;
+  external set enableRangeSelection(bool value);
   external bool get rowDeselection;
   external set rowDeselection(bool value);
   external bool get singleClickEdit;
@@ -615,6 +617,7 @@ class GridOptions {
     bool enableSorting,
     bool enableServerSideSorting,
     bool enableFilter,
+    bool enableRangeSelection,
     bool rowDeselection,
     bool singleClickEdit,
     int headerHeight,

@@ -246,6 +246,7 @@ class GridOptions {
   bool enableSorting;
   bool enableServerSideSorting;
   bool enableFilter;
+  bool enableRangeSelection;
   bool rowDeselection;
   bool singleClickEdit;
   int headerHeight;

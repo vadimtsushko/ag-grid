@@ -145,11 +145,10 @@ class DateHelper {
 
   getFilter() => model.filterValue;
   setFilter(String value) {
-    print('setFilter "$value"');
-    if (value == null || value == '') {
-      filterValue = null;
+    print('DateFilter setFilter "$value"');
+    if (value.toString().trim() == '') {
+      value = null;
     }
-
     filterValue = value;
 
     if (filterValue == null) {
@@ -227,6 +226,13 @@ class DateHelper {
     return '${_twoDigits(date.day)}.${_twoDigits(date.month)}.${date.year}';
   }
 
+  static String toRussianTime(DateTime date) {
+    if (date == null) {
+      return '';
+    }
+    return '${_twoDigits(date.hour)}:${_twoDigits(date.minute)}:${date.second}';
+  }
+
   static String dateCellRenderer(RendererParam params) {
     if (params.value == null) {
       return '';
@@ -237,4 +243,15 @@ class DateHelper {
     }
     return toRussianDate(DateTime.parse(dateStr));
   }
+  static String timeCellRenderer(RendererParam params) {
+    if (params.value == null) {
+      return '';
+    }
+    String dateStr = params.value;
+    if (dateStr == '' || dateStr == null) {
+      return '';
+    }
+    return toRussianTime(DateTime.parse(dateStr));
+  }
+
 }
