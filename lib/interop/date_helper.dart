@@ -12,8 +12,7 @@ class DateHelper {
   static String NULL_DATE_VALUE = '0000-00-00';
   SelectElement selectElement;
   DateInputElement input;
-  DateFilterModel model = new DateFilterModel();
-
+  String filterType;
   String filterValue;
 
   VoidFunc0 filterChangedCallback;
@@ -71,7 +70,7 @@ class DateHelper {
     result.append(inputDiv);
     subscriptions.add(selectElement.onChange.listen((_) => onTypeChanged()));
     subscriptions.add(input.onChange.listen((_) => onFilterChanged()));
-    model.filterType = NumberFilterType.EQUALS;
+    filterType = NumberFilterType.EQUALS;
     return result;
   }
 
@@ -83,13 +82,13 @@ class DateHelper {
   }
 
   DateFilterModel getModel() {
-    model.filterType = selectElement.value;
-    model.filterValue = filterValue;
-    return model;
+    return new DateFilterModel(
+        filterType: filterType, filterValue: filterValue);
   }
 
   setModel(DateFilterModel value) {
-    model = value;
+    filterType = value?.filterType;
+    filterValue = value?.filterValue;
   }
 
   afterGuiAttached(IAfterFilterGuiAttachedParams params) {
@@ -108,7 +107,7 @@ class DateHelper {
       return true;
     }
     String nodeValue = valueGetter(params as RowNode);
-    switch (model.filterType) {
+    switch (filterType) {
       case NumberFilterType.EQUALS:
         return nodeValue == filterValue;
       case NumberFilterType.NOT_EQUAL:
@@ -132,18 +131,18 @@ class DateHelper {
   }
 
   onTypeChanged() {
-    model.filterType = selectElement.value;
+    filterType = selectElement.value;
     this.filterChanged();
   }
 
-  String getType() => model.filterType;
+  String getType() => filterType;
   setType(String value) {
     selectElement.value = value;
-    model.filterType = value;
+    filterType = value;
     filterChanged();
   }
 
-  getFilter() => model.filterValue;
+  getFilter() => filterValue;
   setFilter(String value) {
     print('DateFilter setFilter "$value"');
     if (value.toString().trim() == '') {
@@ -243,6 +242,7 @@ class DateHelper {
     }
     return toRussianDate(DateTime.parse(dateStr));
   }
+
   static String timeCellRenderer(RendererParam params) {
     if (params.value == null) {
       return '';
@@ -253,5 +253,4 @@ class DateHelper {
     }
     return toRussianTime(DateTime.parse(dateStr));
   }
-
 }
