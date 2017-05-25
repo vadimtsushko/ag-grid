@@ -3,7 +3,6 @@ library JsDartInterface;
 import 'package:js/js.dart';
 import 'package:func/func.dart';
 import '../editors/checkbox.dart';
-import '../editors/user.dart';
 @JS()
 @anonymous
 class DartInterface {
