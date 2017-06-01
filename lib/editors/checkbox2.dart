@@ -1,11 +1,7 @@
 @JS()
 library JsCheckboxEditor;
 
-import 'dart:html';
 import 'package:js/js.dart';
-import 'package:func/func.dart';
-import '../interop/ag_grid.dart';
-//import 'prototype.dart';
 
 @JS()
 @anonymous
