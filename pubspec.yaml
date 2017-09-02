@@ -1,7 +1,7 @@
 author: "Vadim Tsushko <vadimtsushko@gmail.com>"
 description: "Dart wrapper for ag-grid"
 name: "ag_grid"
-version: "0.2.7"
+version: "0.2.8"
 dependencies: 
   browser: ">=0.10.0 <0.11.0"
   dart_to_js_script_rewriter: "^1.0.1"
