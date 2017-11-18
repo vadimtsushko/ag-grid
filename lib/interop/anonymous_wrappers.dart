@@ -474,6 +474,8 @@ class GridOptions {
   external set columnDefs(List<ColumnDef> value);
   external dynamic get rowData;
   external set rowData(dynamic value);
+  external int get cacheBlockSize;
+  external set cacheBlockSize(int value);
   external int get paginationPageSize;
   external set paginationPageSize(int value);
   external int get viewportRowModelPageSize;
@@ -488,6 +490,8 @@ class GridOptions {
   external set maxPagesInPaginationCache(int value);
   external bool get virtualPaging;
   external set virtualPaging(bool value);
+  external String get rowModelType;
+  external set rowModelType(String value);
   external bool get toolPanelSuppressGroups;
   external set toolPanelSuppressGroups(bool value);
   external bool get toolPanelSuppressValues;
@@ -544,8 +548,6 @@ class GridOptions {
   external set getNodeChildDetails(Function value);
   external Function get getContextMenuItems;
   external set getContextMenuItems(Function value);
-  external String get rowModelType;
-  external set rowModelType(String value);
   external VoidFunc1<RendererParam> get onCellClicked;
   external set onCellClicked(VoidFunc1<RendererParam> value);
   external VoidFunc1<RendererParam> get onCellDoubleClicked;
@@ -568,6 +570,10 @@ class GridOptions {
   external set onGridReady(VoidFunc1<RendererParam> value);
   external VoidFunc1<RendererParam> get onVirtualRowRemoved;
   external set onVirtualRowRemoved(VoidFunc1<RendererParam> value);
+  external Func1<RendererParam, dynamic> get getRowStyle;
+  external set getRowStyle(Func1<RendererParam, dynamic> value);
+  external VoidFunc1<RendererParam> get getRowClass;
+  external set getRowClass(VoidFunc1<RendererParam> value);
   external VoidFunc1<RendererParam> get onGridSizeChanged;
   external set onGridSizeChanged(VoidFunc1<RendererParam> value);
   external VoidFunc0 get onModelUpdated;
@@ -595,6 +601,7 @@ class GridOptions {
     ColumnApi columnApi,
     List<ColumnDef> columnDefs,
     dynamic rowData,
+    int cacheBlockSize,
     int paginationPageSize,
     int viewportRowModelPageSize,
     int viewportRowModelBufferSize,
@@ -602,6 +609,7 @@ class GridOptions {
     int maxConcurrentDatasourceRequests,
     int maxPagesInPaginationCache,
     bool virtualPaging,
+    String rowModelType,
     bool toolPanelSuppressGroups,
     bool toolPanelSuppressValues,
     bool rowsAlreadyGrouped,
@@ -630,7 +638,6 @@ class GridOptions {
     bool suppressMenuColumnPanel,
     Function getNodeChildDetails,
     Function getContextMenuItems,
-    String rowModelType,
     VoidFunc1<RendererParam> onCellClicked,
     VoidFunc1<RendererParam> onCellDoubleClicked,
     VoidFunc1<RendererParam> onCellContextMenu,
@@ -642,6 +649,8 @@ class GridOptions {
     VoidFunc1<RendererParam> onRowDeselected,
     VoidFunc1<RendererParam> onGridReady,
     VoidFunc1<RendererParam> onVirtualRowRemoved,
+    Func1<RendererParam, dynamic> getRowStyle,
+    VoidFunc1<RendererParam> getRowClass,
     VoidFunc1<RendererParam> onGridSizeChanged,
     VoidFunc0 onModelUpdated,
     VoidFunc1 onSelectionChanged,
@@ -822,8 +831,12 @@ class ColumnDef {
   external set suppressResize(bool value);
   external bool get suppressAutoSize;
   external set suppressAutoSize(bool value);
-  external dynamic get checkboxSelection;
-  external set checkboxSelection(dynamic value);
+  external bool get checkboxSelection;
+  external set checkboxSelection(bool value);
+  external bool get headerCheckboxSelection;
+  external set headerCheckboxSelection(bool value);
+  external bool get headerCheckboxSelectionFilteredOnly;
+  external set headerCheckboxSelectionFilteredOnly(bool value);
   external Function get comparator;
   external set comparator(Function value);
   external dynamic get cellEditor;
@@ -873,7 +886,9 @@ class ColumnDef {
     bool suppressSizeToFit,
     bool suppressResize,
     bool suppressAutoSize,
-    dynamic checkboxSelection,
+    bool checkboxSelection,
+    bool headerCheckboxSelection,
+    bool headerCheckboxSelectionFilteredOnly,
     Function comparator,
     dynamic cellEditor,
     dynamic cellEditorParams,

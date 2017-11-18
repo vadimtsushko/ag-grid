@@ -13,11 +13,13 @@ export 'dart_interface.dart';
 export 'custom_editor.dart';
 export 'date_helper.dart';
 
+
 part 'localizations.dart';
 part 'anonymous_wrappers.dart';
 part 'grid_api.dart';
 part 'column_api.dart';
 part 'filter.dart';
+part 'enterprise_rowmodel.dart';
 
 @JS()
 external initialiseAgGridWithWebComponents();
@@ -26,6 +28,10 @@ external initialiseAgGridWithWebComponents();
 class Grid {
   external Grid(div, GridOptions gridOptions);
 }
+
+@JS('LicenseManager.setLicenseKey')
+external void setLicenseKey(String licenseKey);
+
 
 class FilterType {
   static const text = 'text';

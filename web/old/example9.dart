@@ -5,42 +5,39 @@ import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
 import 'package:ag_grid/js_object_api.dart' as js_object_api;
 import "dart:js";
-
+import 'package:ag_grid/interop/dart_interface.dart';
 import "package:js/js.dart";
-import 'data.dart';
+import '../data.dart';
+import 'package:func/func.dart';
 
 var cellStyleBoolean = new JsObject.jsify({'text-align': 'center'});
 
 GridOptions gridOptions;
 var startDateColDef;
 void main() {
-  HtmlElement button = querySelector('#setDate');
-  button.onClick.listen((_) => setDate());
   initialiseAgGridWithWebComponents();
-  startDateColDef = new ColumnDef(headerName: 'Start date',
-      field: 'startDate',
-      cellRenderer: allowInterop(dateCellRenderer),
-      editable: false);
-  assignDateFilter(startDateColDef);
+  SimpleCustomTextEditor editor = new SimpleCustomTextEditor();
+  setupDartInterface();
+//  createClass('dartInterface', 'NumericCellEditor', NumericCellEditorMethods.getPrototype());
+  var priceColumn = new ColumnDef(
+      headerName: 'Price', field: 'price', editable: true, filter: 'number');
+//  priceColumn.cellEditor = allowInterop(numericCellEditorFactory);
+  //assignNumericCellEditor(priceColumn);
   var gridDiv = querySelector('#myGrid');
   var columnDefs = [
-startDateColDef,
-    new ColumnDef(headerName: 'Make', field: 'make', editable: true),
+    new ColumnDef(headerName: 'Make', field: 'make', editable: true)
+      ..cellEditor = editor.cellEditor,
     new ColumnDef(headerName: 'Model', field: 'model', editable: true),
-    new ColumnDef(headerName: 'Price', field: 'price', editable: true),
-//    priceColumnDef,
+//    new ColumnDef(headerName: 'Price', field: 'price'),
+    priceColumn,
     new ColumnDef(
         headerName: 'Top seller',
         field: 'topSeller',
         editable: true,
         cellStyle: cellStyleBoolean,
         width: 60,
-        newValueHandler: allowInterop(boolNewValueHandler),
-        cellRenderer: allowInterop(booleanCellRenderer),
-        filter: 'set',
-        filterParams: new FilterParams(
-            cellRenderer: allowInterop(booleanFilterCellRenderer),
-            values: ['1','0']))
+        cellEditor: allowInterop(getDartInterface().checkBoxEditorFactory),
+        cellRenderer: allowInterop(booleanCellRenderer))
   ];
 
   var rowData = [
@@ -117,9 +114,50 @@ String toRussianDate(int milliseconds) {
 
 dateCellRenderer(RendererParam params) => toRussianDate(params.value);
 
-
 setDate() {
-  FilterApi filterApi =  gridOptions.api.getFilterApi(startDateColDef);
-  filterApi.setFilter(new DateTime(2012,12,31));
+  FilterApi filterApi = gridOptions.api.getFilterApi(startDateColDef);
+  filterApi.setFilter(new DateTime(2012, 12, 31));
   gridOptions.api.onFilterChanged();
+}
+
+class SimpleCustomTextEditor {
+  InputElement input;
+  Func0<CellEditorWrapper> get cellEditor => allowInterop(createCustomEditor);
+
+  CellEditorWrapper createCustomEditor() {
+    CellEditorWrapper result = new CellEditorWrapper();
+    result.init = allowInterop((CellEditorInitParams params) {
+      print('CellEditorWrapper init');
+      input = new InputElement();
+      input.value = params.value;
+    });
+
+    result.getGui = allowInterop(() {
+      print('CellEditorWrapper getGui');
+      return input;
+    });
+
+    result.afterGuiAttached = allowInterop(() {
+      print('CellEditorWrapper afterGuiAttached');
+      input.focus();
+      input.select();
+    });
+
+    result.getValue = allowInterop(() {
+      print('CellEditorWrapper getValue');
+      return input.value.toUpperCase();
+    });
+
+    result.isPopup = allowInterop(() {
+      print('CellEditorWrapper isPopup');
+      return true;
+    });
+
+    result.destroy = allowInterop(() {
+      print('CellEditorWrapper destroy');
+      input = null;
+    });
+
+    return result;
+  }
 }

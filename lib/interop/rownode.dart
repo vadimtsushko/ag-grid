@@ -172,6 +172,7 @@ class RowNode {
   external void removeEventListener(String eventType, Function listener);
   external void onMouseEnter();
   external void onMouseLeave();
+  external bool get rowPinned;
 }
 
 

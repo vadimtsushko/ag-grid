@@ -38,6 +38,7 @@ main() async {
         headerName: "Date",
         field: "date",
         width: 110,
+        editable: true,
         valueGetter: allowInterop(DateHelper.dateValueGetter),
         filter: dateFilter.filter,
         cellRenderer: allowInterop(DateHelper.dateCellRenderer)),

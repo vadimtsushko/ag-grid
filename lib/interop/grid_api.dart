@@ -5,6 +5,7 @@ class GridApi {
   external String getDataAsCsv(CsvExportParams params);
   external exportDataAsCsv(CsvExportParams params);
   external setDatasource(dataSource);
+  external setEnterpriseDatasource(dataSource);
   external onNewDatasource();
   external setRowData(rowData);
   external setRows(rows);
@@ -81,6 +82,8 @@ class GridApi {
 
   external void setFilterModel(model);
   external getFilterModel();
+  external setPinnedTopRowData(List data);
+  external setPinnedBottomRowData(List data);
 
 
 

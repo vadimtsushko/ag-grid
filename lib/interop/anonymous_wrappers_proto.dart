@@ -104,7 +104,9 @@ class ColumnDef {
   bool suppressSizeToFit;
   bool suppressResize;
   bool suppressAutoSize;
-  var checkboxSelection;
+  bool checkboxSelection;
+  bool headerCheckboxSelection;
+  bool headerCheckboxSelectionFilteredOnly;
   Function comparator;
   var cellEditor;
   var cellEditorParams;
@@ -224,6 +226,7 @@ class GridOptions {
   ColumnApi columnApi;
   List<ColumnDef> columnDefs;
   var rowData;
+  int cacheBlockSize;
   int paginationPageSize;
   int viewportRowModelPageSize;
   int viewportRowModelBufferSize;
@@ -231,6 +234,9 @@ class GridOptions {
   int maxConcurrentDatasourceRequests;
   int maxPagesInPaginationCache;
   bool virtualPaging;
+  //// Sets the Row Model type. Defaults to 'inMemory'.
+  // Valid options are [inMemory,infinite,viewport,enterprise].
+  String rowModelType;
   bool toolPanelSuppressGroups;
   bool toolPanelSuppressValues;
   bool rowsAlreadyGrouped;
@@ -259,7 +265,6 @@ class GridOptions {
   bool suppressMenuColumnPanel;
   Function getNodeChildDetails;
   Function getContextMenuItems;
-  String rowModelType;
   VoidFunc1<RendererParam> onCellClicked;
   VoidFunc1<RendererParam> onCellDoubleClicked;
   VoidFunc1<RendererParam> onCellContextMenu;
@@ -271,6 +276,8 @@ class GridOptions {
   VoidFunc1<RendererParam> onRowDeselected;
   VoidFunc1<RendererParam> onGridReady;
   VoidFunc1<RendererParam> onVirtualRowRemoved;
+  Func1<RendererParam,dynamic> getRowStyle;
+  VoidFunc1<RendererParam> getRowClass;
 
   VoidFunc1<RendererParam> onGridSizeChanged;
 
@@ -367,6 +374,39 @@ class ViewportDatasourceParams {
 
 }
 
+//class ColumnVO {
+//  String id;
+//  String displayName;
+//  String field;
+//  String aggFunc;
+//}
+//
+//class IEnterpriseGetRowsRequest {
+//  List<ColumnVO> rowGroupCols;
+//  List<ColumnVO> valueCols;
+//  List<ColumnVO> pivotCols;
+//  bool pivotMode;
+//  List<String> groupKeys;
+//  dynamic filterModel;
+//  dynamic sortModel;
+//  int startRow;
+//  int endRow;
+//}
+//
+//class IEnterpriseGetRowsParams {
+//  // details for the request
+//  IEnterpriseGetRowsRequest request;
+//  // success callback, pass the rows back the grid asked for.
+//  // if the total row count is known, provide it via lastRow, so the
+//  // grid can adjust the scrollbar accordingly.
+//  VoidFunc2<List, int> successCallback;
+//  // fail callback, tell the grid the call failed so it can adjust its state
+//  VoidFunc0 failCallback;
+//}
+//
+//class IEnterpriseDatasource {
+//  VoidFunc1<IEnterpriseGetRowsParams> getRows;
+//}
 //class CellEditorWrapper {
 //  VoidFunc1<dynamic> init;
 //  Func0<dynamic> getGui;

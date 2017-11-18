@@ -14,9 +14,7 @@ rowNumCellRendererFunc(RendererParam params) {
 }
 
 main() async {
-  initialiseAgGridWithWebComponents();
   var gridDiv = querySelector('#myGrid');
-
   var columnDefs = [
     new ColumnDef(
         headerName: '#',

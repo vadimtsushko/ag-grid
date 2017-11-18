@@ -7,7 +7,7 @@ import 'package:ag_grid/js_object_api.dart' as js_object_api;
 import "dart:js";
 import 'package:ag_grid/interop/dart_interface.dart';
 import "package:js/js.dart";
-import 'data.dart';
+import '../data.dart';
 
 var cellStyleBoolean = new JsObject.jsify({'text-align': 'center'});
 

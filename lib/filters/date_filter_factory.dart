@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:js_util' as js_util;
 import 'package:func/func.dart';
 
-class DateHelper {
+class DateFilterFactory {
   static String NULL_DATE_VALUE = '0000-00-00';
   SelectElement selectElement;
   DateInputElement input;
@@ -105,19 +105,27 @@ class DateHelper {
       return true;
     }
     String nodeValue = valueGetter(params as RowNode);
+    DateTime nodeDate, filterDate;
+    try{
+      nodeDate = DateTime.parse(nodeValue);
+      filterDate = DateTime.parse(filterValue);
+    }
+    catch(exception){
+      return false;
+    }
     switch (filterType) {
       case NumberFilterType.EQUALS:
-        return nodeValue == filterValue;
+        return nodeDate == filterDate;
       case NumberFilterType.NOT_EQUAL:
-        return nodeValue != filterValue;
+        return nodeDate != filterDate;
       case NumberFilterType.LESS_THAN:
-        return nodeValue.compareTo(filterValue) > 0;
+        return nodeDate.isBefore(filterDate);
       case NumberFilterType.LESS_THAN_OR_EQUAL:
-        return nodeValue.compareTo(filterValue) >= 0;
+        return nodeDate.isBefore(filterDate) || nodeDate==filterDate;
       case NumberFilterType.GREATER_THAN:
-        return nodeValue.compareTo(filterValue) < 0;
+        return nodeDate.isAfter(filterDate);
       case NumberFilterType.GREATER_THAN_OR_EQUAL:
-        nodeValue.compareTo(filterValue) <= 0;
+        return nodeDate.isAfter(filterDate) || nodeDate==filterDate;
     }
     return false;
   }
@@ -158,7 +166,6 @@ class DateHelper {
 
   filterChanged() {
     print('DateFilter filterChanged');
-//    this.filterModifiedCallback();
     this.filterChangedCallback();
   }
 
@@ -172,12 +179,8 @@ class DateHelper {
   }
 
   String getNewValue() {
-//    return input.valueAsDate?.millisecondsSinceEpoch;
-    DateTime value = input.valueAsDate;
-    if (value == null) {
-      return null;
-    }
     try {
+      DateTime value = input.valueAsDate;
       return dateToComparableString(value);
     } catch (e) {
       return null;
@@ -222,45 +225,24 @@ class DateHelper {
       return '';
     }
 
+    if(date is String)
+      return '';
+
     return '${_twoDigits(date.day)}.${_twoDigits(date.month)}.${date.year}';
   }
 
-  static String toRussianTime(DateTime date) {
-    if (date == null) {
-      return '';
-    }
-    return '${_twoDigits(date.hour)}:${_twoDigits(date.minute)}:${date.second}';
-  }
-
   static String dateCellRenderer(RendererParam params) {
-    if (params.value == null) {
-      return '';
-    }
-    String dateStr = params.value;
-    if (dateStr == '' || dateStr == null) {
-      return '';
-    }
-    return toRussianDate(DateTime.parse(dateStr));
-  }
-
-  static String timeCellRenderer(RendererParam params) {
-    if (params.value == null) {
-      return '';
-    }
-    String dateStr = params.value;
-    if (dateStr == '' || dateStr == null) {
-      return '';
-    }
-    return toRussianTime(DateTime.parse(dateStr));
-  }
-
-  static String dateOnlyCellRenderer(RendererParam params) {
-
     if (params.value == null)
       return '';
 
-    DateTime date = params.value;
-
-    return toRussianDate(date);
+    if(params.value is String){
+      try{
+        DateTime date = DateTime.parse(params.value);
+        return toRussianDate(date);
+      }
+      catch(exception){
+        return '';
+      }
+    }
   }
 }

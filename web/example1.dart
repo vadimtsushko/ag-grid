@@ -6,8 +6,6 @@ import 'package:ag_grid/ag_grid.dart';
 import "dart:js";
 
 void main() {
-  initialiseAgGridWithWebComponents();
-
   var gridDiv = querySelector('#myGrid');
   var columnDefs = [
     new ColumnDef(headerName: 'Make', field: 'make'),

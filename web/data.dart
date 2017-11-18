@@ -16,10 +16,13 @@ class CarItem {
   external set startDate(int value);
   external String get topSeller;
   external set topSeller(String value);
+  external DateTime get makeDate;
+  external set makeDate(DateTime value);
   external factory CarItem ({
   String make,
   String model,
   int price,
   int startDate,
-  String topSeller});
+  String topSeller,
+  DateTime makeDate});
 }

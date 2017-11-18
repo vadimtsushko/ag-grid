@@ -13,14 +13,13 @@
     <title>ag_wc</title>
     <script defer src="example2.dart" type="application/dart"></script>
     <script defer src="packages/browser/dart.js"></script>
-    <script src="dist/ag-grid.js?ignore=notused18"></script>
+    <script src="https://unpkg.com/ag-grid@14.2.0/dist/ag-grid.js"></script>
 
 </head>
 
 <body>
-Extending first example. Checkbox selection added. At the moment standard ag-grid does not provide "select all"/"deselect all" check box at header row.
-So in that example we add that feature with custom header renderer and using GridApi. Take a notice that `Select all` take into account current filter.
-That sample also demonstrate localization (russian localization applied)
+Extending first example. Checkbox selection added. Checkbox selection is implemented natively now,
+so no need in custom renderer anymore.
 <hr>
   <div id="myGrid" class="ag-fresh" style="height: 400px; margin-top: 4px; width: 600px;"></div>
 

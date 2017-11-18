@@ -13,16 +13,24 @@ innerCellRenderer(RendererParam params) {
   } else {
     image = 'file';
   }
-  var imageFullUrl = 'file_browser/' + image + '.png';
+  var imageFullUrl = image + '.png';
   FileBrowserItem file = params.data;
+  int padding = (params.node.level + 1) * 16;
+  if (!params.node.group) {
+    padding = padding + 12;
+  }
   return '<img src="' +
       imageFullUrl +
-      '" style="padding-left: 4px;" /> ' +
+      '" style="padding-left: ${padding}px;" /> ' +
       file.name;
 }
 
 onCellFocused(RendererParam params) {
   GridCell currentCell = api.getFocusedCell();
+  if(currentCell == null) {
+    dom.querySelector('#selectedFile').setInnerHtml('');
+    return;
+  }
   int rowIdx = currentCell.rowIndex;
   RowModel rowModel = api.getModel();
   RowNode node = rowModel.getRow(rowIdx);
@@ -48,7 +56,7 @@ getNodeChildDetails(FileBrowserItem file) {
 }
 
 void main() {
-  initialiseAgGridWithWebComponents();
+//  initialiseAgGridWithWebComponents();
   var rowData = new JsObject.jsify(rowDataArray);
   var gridDiv = dom.querySelector('#myGrid');
   var columnDefs = [
