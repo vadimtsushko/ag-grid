@@ -3,7 +3,7 @@
 
 import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
-import "dart:js";
+import "dart:js_util";
 
 import "package:js/js.dart";
 
@@ -40,7 +40,7 @@ void main() {
     new ColumnDef(headerName: 'Price', field: 'price')
   ];
 
-  var rowData = new JsObject.jsify([
+  var rowData = jsify([
     {'make': "Toyota", 'model': "Celica", 'price': 35000},
     {'make': "Ford", 'model': "Mondeo", 'price': 32000},
     {'make': "Porsche", 'model': "Boxter", 'price': 72000}

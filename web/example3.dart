@@ -3,7 +3,7 @@
 
 import 'dart:html';
 import 'package:ag_grid/ag_grid.dart';
-import "dart:js";
+import "dart:js_util";
 import 'dart:convert';
 import "package:js/js.dart";
 
@@ -50,6 +50,6 @@ main() async {
   new Grid(gridDiv, gridOptions);
   var path = 'olympicWinners.json';
   var allOfTheData = JSON.decode(await HttpRequest.getString(path));
-  var rowData = new JsObject.jsify(allOfTheData);
+  var rowData = jsify(allOfTheData);
   gridOptions.api.setRowData(rowData);
 }

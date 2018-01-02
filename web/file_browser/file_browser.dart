@@ -3,6 +3,7 @@
 
 import 'dart:html' as dom;
 import 'package:ag_grid/ag_grid.dart';
+import "dart:js_util";
 import "dart:js";
 
 GridApi api;
@@ -57,7 +58,7 @@ getNodeChildDetails(FileBrowserItem file) {
 
 void main() {
 //  initialiseAgGridWithWebComponents();
-  var rowData = new JsObject.jsify(rowDataArray);
+  var rowData = jsify(rowDataArray);
   var gridDiv = dom.querySelector('#myGrid');
   var columnDefs = [
     new ColumnDef(
@@ -71,7 +72,7 @@ void main() {
         headerName: "Size",
         field: "size",
         width: 70,
-        cellStyle: new JsObject.jsify({'text-align': 'right'})),
+        cellStyle: jsify({'text-align': 'right'})),
     new ColumnDef(headerName: "Type", field: "type", width: 150),
     new ColumnDef(
         headerName: "Date Modified", field: "dateModified", width: 150),
